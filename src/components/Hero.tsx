@@ -56,7 +56,7 @@ export function Hero() {
         </div>
       </Reveal>
 
-      <div style={{ height: 96 }} />
+      <div style={{ height: 32 }} />
     </section>
   );
 }

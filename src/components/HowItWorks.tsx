@@ -29,11 +29,11 @@ export async function HowItWorks() {
           className="grid gap-6 md:grid-cols-12"
           style={{ marginTop: 56, alignItems: "start" }}
         >
-          <Reveal className="md:col-span-7" delay={80}>
+          <Reveal className="md:col-span-7 min-w-0" delay={80}>
             <CodePanel code={heroScene} filename="MainMenu.cs" />
           </Reveal>
 
-          <Reveal className="md:col-span-5" delay={160}>
+          <Reveal className="md:col-span-5 min-w-0" delay={160}>
             <div className="flex flex-col gap-5">
               <div>
                 <h3 className="h3">Edit either side. Never out of sync.</h3>

@@ -123,11 +123,12 @@ export function Benefits() {
           </Reveal>
         </div>
 
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3" style={{ marginTop: 56 }}>
+        <div className="grid grid-cols-2 gap-3 lg:grid-cols-3 lg:gap-5" style={{ marginTop: 48 }}>
           {FEATURES.map((f, i) => (
             <Reveal key={f.title} delay={70 + (i % 3) * 70}>
               <article className="card" style={{ height: "100%" }}>
                 <div
+                  className="card-icon"
                   style={{
                     width: 44,
                     height: 44,
@@ -138,27 +139,14 @@ export function Benefits() {
                     alignItems: "center",
                     justifyContent: "center",
                     color: "var(--accent)",
+                    flexShrink: 0,
                   }}
                 >
                   {f.icon}
                 </div>
-                <h3 className="h3" style={{ marginTop: 20, fontSize: "1.2rem" }}>
-                  {f.title}
-                </h3>
-                <p style={{ marginTop: 10, fontSize: "0.95rem" }}>{f.body}</p>
-                {f.stat ? (
-                  <p
-                    style={{
-                      marginTop: 16,
-                      paddingTop: 16,
-                      borderTop: "1px solid var(--border)",
-                      fontSize: "0.82rem",
-                      color: "var(--text-muted)",
-                    }}
-                  >
-                    {f.stat}
-                  </p>
-                ) : null}
+                <h3 className="card-title">{f.title}</h3>
+                <p className="card-body">{f.body}</p>
+                {f.stat ? <p className="card-stat">{f.stat}</p> : null}
               </article>
             </Reveal>
           ))}

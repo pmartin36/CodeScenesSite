@@ -95,6 +95,7 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   line-height: 1.6;
+  overflow-x: clip; /* page never scrolls sideways; wide content scrolls in its own box */
 }
 
 ::selection {
@@ -290,6 +291,34 @@ a {
   background: var(--surface-2);
 }
 
+/* benefit-card typography (class-based so it can flex on mobile) */
+.card-title {
+  color: var(--text);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  font-size: 1.2rem;
+  margin-top: 20px;
+}
+.card-body {
+  margin-top: 10px;
+  font-size: 0.95rem;
+}
+.card-stat {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+@media (max-width: 640px) {
+  .card { padding: 16px; }
+  .card-icon { width: 36px !important; height: 36px !important; }
+  .card-title { font-size: 1rem; margin-top: 14px; }
+  .card-body { font-size: 0.82rem; margin-top: 8px; }
+  .card-stat { font-size: 0.72rem; margin-top: 12px; padding-top: 12px; }
+}
+
 /* ============================================================
    Code panel (editor window)
    ============================================================ */
@@ -298,6 +327,8 @@ a {
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--r-xl);
   overflow: hidden;
+  min-width: 0; /* allow shrink inside grid/flex so the code scrolls, not the page */
+  max-width: 100%;
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.04) inset,
     0 24px 60px -20px rgba(0, 0, 0, 0.6);
@@ -479,7 +510,7 @@ a {
   width: 100%;
   max-width: 1400px;
   margin-inline: auto;
-  padding-inline: 24px;
+  padding-inline: 14px;
 }
 @media (min-width: 768px) {
   .video-band { padding-inline: 40px; }
@@ -488,7 +519,7 @@ a {
   aspect-ratio: 2.35 / 1;
 }
 @media (max-width: 640px) {
-  .video-frame--wide { aspect-ratio: 16 / 10; }
+  .video-frame--wide { aspect-ratio: 4 / 3; }
 }
 
 /* floating callout chip on a code line */
@@ -515,53 +546,42 @@ a {
    ============================================================ */
 .cmp-row {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 1fr; /* mobile: MCP | CodeScenes side by side */
   border-bottom: 1px solid var(--border);
 }
 .cmp-row:last-child { border-bottom: 0; }
 .cmp-cell {
-  padding: 16px 20px;
-  font-size: 0.9rem;
+  padding: 12px 14px;
+  font-size: 0.82rem;
   color: var(--text-secondary);
 }
 .cmp-label {
+  grid-column: 1 / -1; /* mobile: full-width header line above the two columns */
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--text-muted);
-  padding-bottom: 4px;
+  padding-bottom: 2px;
 }
+.cmp-mcp { border-right: 1px solid var(--border); }
 .cmp-cfs {
   color: var(--text);
   background: rgba(52, 226, 155, 0.04);
 }
-.cmp-head .cmp-cell { padding-block: 14px; }
 .cmp-head { background: var(--surface); }
+.cmp-head .cmp-label { display: none; }
 
 @media (min-width: 760px) {
   .cmp-row {
     grid-template-columns: 150px 1fr 1fr;
     align-items: start;
   }
-  .cmp-label { padding-block: 16px; }
-  .cmp-mcp { border-left: 1px solid var(--border); }
+  .cmp-cell { padding: 16px 20px; font-size: 0.9rem; }
+  .cmp-label { grid-column: auto; padding-block: 16px; }
+  .cmp-mcp { border-right: 0; border-left: 1px solid var(--border); }
   .cmp-cfs { border-left: 1px solid var(--border); }
-}
-@media (max-width: 759px) {
-  .cmp-head { display: none; }
-  .cmp-mcp::before {
-    content: "Unity MCP: ";
-    color: var(--text-muted);
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-  }
-  .cmp-cfs::before {
-    content: "CodeScenes: ";
-    color: var(--accent);
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-  }
+  .cmp-head .cmp-label { display: block; }
 }
 
 /* section divider hairline */
