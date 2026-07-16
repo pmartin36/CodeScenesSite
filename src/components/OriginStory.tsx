@@ -22,9 +22,9 @@ export function OriginStory() {
               style={{ marginTop: 24, fontSize: "1.05rem", lineHeight: 1.7 }}
             >
               <p>
-                While I was working at Meta, I set myself a goal: one-shot a game.
-                Describe it to an AI, get something real back. So I tried every
-                AI-to-Unity tool I could find, Unity MCP included.
+                While I was working on games at Meta, I set myself a goal: one-shot
+                a game. Describe it to an AI, get something real back. So I tried
+                every AI-to-Unity tool I could find, Unity MCP included.
               </p>
               <p>
                 The Unity MCP solutions couldn&rsquo;t even produce a game. It was
