@@ -15,20 +15,19 @@ const FEATURES: Feature[] = [
     body: (
       <>
         Edit the code and the scene updates. Move something in the editor and the
-        code updates. It&rsquo;s invisible and automatic — you never press a
-        button, and you&rsquo;re never trapped on one side.
+        code updates. It&rsquo;s invisible and automatic — no button to press, and
+        you&rsquo;re never trapped on one side.
       </>
     ),
-    stat: <>The sync engine is the whole point — stable identity, reconciled in place.</>,
   },
   {
     icon: <IconCode />,
-    title: "AI speaks code, not clicks",
+    title: "AI's native language is code",
     body: (
       <>
-        LLMs are fluent in C# and clumsy with a GUI. Give the model the whole scene
-        as code it can read and edit — instead of making it drive a 3D editor
-        through tool calls it can&rsquo;t see.
+        LLMs are fluent in symbolic code. Hand the model the whole scene as one
+        readable file it reads and edits in a single pass — not a stream of one-off
+        editor commands.
       </>
     ),
     stat: (
@@ -39,19 +38,41 @@ const FEATURES: Feature[] = [
     ),
   },
   {
+    icon: <IconCheck />,
+    title: "Validated by a compiler",
+    body: (
+      <>
+        The AI doesn&rsquo;t just generate a scene — it can compile it. If the C#
+        doesn&rsquo;t build, it isn&rsquo;t a valid scene, so broken output never
+        reaches your project.
+      </>
+    ),
+    stat: <>Generate, validate, refactor, sanity-check — with a real safety net.</>,
+  },
+  {
+    icon: <IconLayout />,
+    title: "Place things relatively",
+    body: (
+      <>
+        Exact coordinates are where LLMs slip. Layout helpers let the model position
+        objects relative to each other — describing intent instead of guessing
+        numbers.
+      </>
+    ),
+  },
+  {
     icon: <IconGit />,
     title: "Scenes you can diff & review",
     body: (
       <>
         Your scene is clean C# in git — real pull-request diffs, line-by-line
         review, and <span className="icode">git blame</span> that means something.
-        Not a wall of YAML nobody can read.
       </>
     ),
     stat: (
       <>
-        Unity&rsquo;s own community consensus: <span className="icode">.unity</span>{" "}
-        files &ldquo;cannot be merged reliably.&rdquo;<Sup n={1} />
+        You already know the pain of merging a <span className="icode">.unity</span>{" "}
+        file. Code diffs like anything else.<Sup n={1} />
       </>
     ),
   },
@@ -60,9 +81,9 @@ const FEATURES: Feature[] = [
     title: "Escape the MCP tax",
     body: (
       <>
-        An MCP server injects dozens of tool schemas into context every session and
+        An MCP server holds dozens of tool schemas in context every session and
         round-trips every edit. CodeScenes puts one thing in context: the scene, as
-        a file. More budget for reasoning, better results.
+        a file.
       </>
     ),
     stat: (
@@ -96,9 +117,9 @@ export function Benefits() {
           </Reveal>
         </div>
 
-        <div className="grid gap-5 md:grid-cols-2" style={{ marginTop: 56 }}>
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3" style={{ marginTop: 56 }}>
           {FEATURES.map((f, i) => (
-            <Reveal key={f.title} className="reveal" delay={80 + i * 70}>
+            <Reveal key={f.title} delay={70 + (i % 3) * 70}>
               <article className="card" style={{ height: "100%" }}>
                 <div
                   style={{
@@ -115,17 +136,17 @@ export function Benefits() {
                 >
                   {f.icon}
                 </div>
-                <h3 className="h3" style={{ marginTop: 20, fontSize: "1.25rem" }}>
+                <h3 className="h3" style={{ marginTop: 20, fontSize: "1.2rem" }}>
                   {f.title}
                 </h3>
-                <p style={{ marginTop: 10 }}>{f.body}</p>
+                <p style={{ marginTop: 10, fontSize: "0.95rem" }}>{f.body}</p>
                 {f.stat ? (
                   <p
                     style={{
                       marginTop: 16,
                       paddingTop: 16,
                       borderTop: "1px solid var(--border)",
-                      fontSize: "0.85rem",
+                      fontSize: "0.82rem",
                       color: "var(--text-muted)",
                     }}
                   >
@@ -171,6 +192,23 @@ function IconCode() {
   return (
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path d="M8 7l-5 5 5 5M16 7l5 5-5 5M13.5 4l-3 16" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+function IconCheck() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M12 2.5l7.5 3v5c0 4.6-3.1 8.4-7.5 9.5-4.4-1.1-7.5-4.9-7.5-9.5v-5l7.5-3Z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
+      <path d="M8.6 12l2.3 2.3 4.5-4.6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+function IconLayout() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <rect x="3" y="4" width="8" height="7" rx="1.6" stroke="currentColor" strokeWidth="1.6" />
+      <rect x="14" y="4" width="7" height="12" rx="1.6" stroke="currentColor" strokeWidth="1.6" />
+      <rect x="3" y="14" width="8" height="6" rx="1.6" stroke="currentColor" strokeWidth="1.6" />
     </svg>
   );
 }

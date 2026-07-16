@@ -18,8 +18,9 @@ export async function HowItWorks() {
           <Reveal delay={120}>
             <p className="lead" style={{ marginTop: 16 }}>
               Not a wall of YAML. A flat, readable C# builder your AI can generate,
-              refactor, and sanity-check in a single pass — and that you can diff,
-              review, and merge like any other code.
+              validate, refactor, and sanity-check in one pass — a real compiler
+              guarantees it&rsquo;s a valid scene — and that you can diff, review, and
+              merge like any other code.
             </p>
           </Reveal>
         </div>

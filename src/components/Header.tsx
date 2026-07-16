@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { Logo } from "./Logo";
-import { GITHUB_URL } from "@/lib/site";
 
 const NAV = [
   { label: "Features", href: "#features" },
@@ -56,17 +55,15 @@ export function Header() {
             className="hidden md:flex items-center justify-end gap-3"
             style={{ flex: 1 }}
           >
-            <a
-              href={GITHUB_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="nav-link"
+            <button
+              type="button"
+              className="btn btn-primary btn-sm is-disabled"
+              aria-disabled="true"
+              title="Launching soon"
             >
-              GitHub
-            </a>
-            <a href="#waitlist" className="btn btn-primary btn-sm">
-              Get early access
-            </a>
+              <span className="soon-dot" aria-hidden="true" />
+              Get the plugin
+            </button>
           </div>
 
           {/* mobile: hamburger */}
@@ -112,14 +109,15 @@ export function Header() {
                 {item.label}
               </a>
             ))}
-            <a
-              href="#waitlist"
-              className="btn btn-primary"
+            <button
+              type="button"
+              className="btn btn-primary is-disabled"
+              aria-disabled="true"
               style={{ marginTop: 12 }}
-              onClick={() => setOpen(false)}
             >
-              Get early access
-            </a>
+              <span className="soon-dot" aria-hidden="true" />
+              Get the plugin
+            </button>
           </nav>
         </div>
       ) : null}

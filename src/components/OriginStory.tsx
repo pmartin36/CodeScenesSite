@@ -23,15 +23,15 @@ export function OriginStory() {
             >
               <p>
                 While I was working at Meta, I set myself a goal: one-shot a game —
-                describe it to an AI and get something real back. So I tried every
-                AI-to-Unity plugin I could find, including Unity MCP. I even rolled
-                my own.
+                describe it to an AI and get something real back. I tried every
+                AI-to-Unity tool I could find, Unity MCP included. None of them
+                worked for me.
               </p>
               <p>
-                It worked. But every game I built this way ended up costing the
-                company thousands of dollars in tokens — because I was burning the
-                model&rsquo;s budget making it fumble through the editor, one tool
-                call at a time.
+                So I rolled my own. That one actually worked — but every game I built
+                with it cost thousands of dollars in tokens, because I was burning
+                the model&rsquo;s budget making it operate the editor one tool call
+                at a time.
               </p>
 
               <blockquote
@@ -51,44 +51,14 @@ export function OriginStory() {
               </blockquote>
 
               <p>
-                That&rsquo;s the whole idea behind CodeScenes. Stop translating the
-                AI onto a GUI it can&rsquo;t see. Let it write code — the thing
+                That&rsquo;s the whole idea behind CodeScenes. Stop making the AI
+                drive the editor one command at a time. Let it write code — the thing
                 it&rsquo;s genuinely great at — and keep that code and the live scene
                 in sync, both ways, so you never have to choose between them.
               </p>
             </div>
           </Reveal>
 
-          <Reveal delay={180}>
-            <div
-              className="flex items-center gap-3"
-              style={{ marginTop: 28, paddingTop: 24, borderTop: "1px solid var(--border)" }}
-            >
-              <span
-                aria-hidden="true"
-                style={{
-                  width: 40,
-                  height: 40,
-                  borderRadius: "9999px",
-                  background: "rgba(52,226,155,0.12)",
-                  border: "1px solid var(--border-strong)",
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  color: "var(--accent)",
-                  fontFamily: "var(--font-mono)",
-                  fontWeight: 600,
-                }}
-              >
-                P
-              </span>
-              <div style={{ fontSize: "0.9rem" }}>
-                {/* TODO(paul): confirm how you want to be credited here. */}
-                <div style={{ color: "var(--text)", fontWeight: 550 }}>Paul</div>
-                <div className="muted">Founder, CodeScenes</div>
-              </div>
-            </div>
-          </Reveal>
         </div>
       </div>
     </section>

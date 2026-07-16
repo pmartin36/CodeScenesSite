@@ -1,5 +1,5 @@
 import { Logo } from "./Logo";
-import { GITHUB_URL, BLUESKY_URL, CONTACT_EMAIL } from "@/lib/site";
+import { BLUESKY_URL, CONTACT_EMAIL } from "@/lib/site";
 
 const YEAR = new Date().getFullYear();
 
@@ -9,13 +9,12 @@ const COLS: { title: string; links: { label: string; href: string; ext?: boolean
     links: [
       { label: "Features", href: "#features" },
       { label: "How it works", href: "#how" },
-      { label: "Early access", href: "#waitlist" },
+      { label: "Origin story", href: "#origin" },
     ],
   },
   {
     title: "About",
     links: [
-      { label: "Origin story", href: "#origin" },
       { label: "Help", href: "#help" },
       { label: "Sources", href: "#sources" },
     ],
@@ -23,7 +22,6 @@ const COLS: { title: string; links: { label: string; href: string; ext?: boolean
   {
     title: "Connect",
     links: [
-      { label: "GitHub", href: GITHUB_URL, ext: true },
       { label: "Bluesky", href: BLUESKY_URL, ext: true },
       { label: "Email", href: `mailto:${CONTACT_EMAIL}`, ext: true },
     ],

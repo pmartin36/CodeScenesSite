@@ -6,7 +6,7 @@ type Row = { label: string; mcp: ReactNode; cfs: ReactNode };
 const ROWS: Row[] = [
   {
     label: "The interface",
-    mcp: "The AI drives the editor through dozens of granular tool calls it can't see.",
+    mcp: "The AI drives the editor through dozens of granular tool calls, one action at a time.",
     cfs: "The AI edits one readable C# file — the whole scene, in context.",
   },
   {
@@ -33,8 +33,8 @@ const ROWS: Row[] = [
     label: "Version control",
     mcp: (
       <>
-        Still the <span className="icode">.unity</span> YAML the community says never
-        to merge.<Sup n={1} />
+        Still wrangling <span className="icode">.unity</span> YAML merges by hand —
+        you know the headache.<Sup n={1} />
       </>
     ),
     cfs: "Real git diffs, pull-request review, and blame on your scene.",
@@ -67,9 +67,9 @@ export function Comparison() {
           <Reveal delay={120}>
             <p className="lead" style={{ marginTop: 16 }}>
               Unity MCP servers are a serious, capable way to automate the whole
-              editor. But for <em>authoring scenes</em>, making an AI operate a GUI
-              through tool calls fights the model instead of playing to it. We think
-              scenes belong in code.
+              editor. But for <em>authoring scenes</em>, making an AI drive the editor
+              through a stream of granular tool calls fights the model instead of
+              playing to it. We think scenes belong in code.
             </p>
           </Reveal>
         </div>

@@ -238,6 +238,26 @@ a {
 }
 .btn-sm { height: 38px; padding-inline: 16px; font-size: 0.875rem; }
 
+/* disabled / coming-soon CTA */
+.btn.is-disabled,
+.btn:disabled {
+  background: var(--surface-2);
+  color: var(--text-muted);
+  border-color: var(--border-strong);
+  cursor: not-allowed;
+  pointer-events: none;
+  box-shadow: none;
+  transform: none;
+}
+.btn.is-disabled .soon-dot,
+.btn:disabled .soon-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+}
+
 /* ============================================================
    Chip / tag
    ============================================================ */
@@ -452,6 +472,23 @@ a {
   border-radius: var(--r-xl);
   overflow: hidden;
   box-shadow: 0 40px 80px -32px rgba(0, 0, 0, 0.8);
+}
+
+/* wide, full-bleed demo band under the hero headline */
+.video-band {
+  width: 100%;
+  max-width: 1400px;
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+@media (min-width: 768px) {
+  .video-band { padding-inline: 40px; }
+}
+.video-frame--wide {
+  aspect-ratio: 2.35 / 1;
+}
+@media (max-width: 640px) {
+  .video-frame--wide { aspect-ratio: 16 / 10; }
 }
 
 /* floating callout chip on a code line */
