@@ -14,9 +14,15 @@ const FEATURES: Feature[] = [
     title: "True two-way sync",
     body: (
       <>
-        Edit the code and the scene updates. Move something in the editor and the
-        code updates. It&rsquo;s invisible and automatic. No button to press, and
-        you&rsquo;re never trapped on one side.
+        Edit the code or move something in the editor, and the other side updates to
+        match, in place. It never wipes and rebuilds, so you can re-run it endlessly
+        and every reference, prefab link, and object stays intact.
+      </>
+    ),
+    stat: (
+      <>
+        Stable identity across every re-run is the part a one-off build script
+        can&rsquo;t do. It&rsquo;s the whole point.
       </>
     ),
   },
@@ -39,15 +45,15 @@ const FEATURES: Feature[] = [
   },
   {
     icon: <IconCheck />,
-    title: "Validated by a compiler",
+    title: "No half-broken scenes",
     body: (
       <>
-        The AI doesn&rsquo;t just generate a scene, it can compile it. If the C#
-        doesn&rsquo;t build, it isn&rsquo;t a valid scene, so broken output never
-        reaches your project.
+        An MCP agent mutates the editor one action at a time and can stall
+        mid-sequence, leaving a scene half-changed. CodeScenes applies a computed
+        plan in place, all at once: it lands cleanly or not at all.
       </>
     ),
-    stat: <>Generate, validate, refactor, and sanity-check, all with a real safety net.</>,
+    stat: <>And because your scene is C#, invalid output won&rsquo;t even compile.</>,
   },
   {
     icon: <IconLayout />,
