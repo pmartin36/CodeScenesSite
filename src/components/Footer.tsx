@@ -75,9 +75,9 @@ export function Footer() {
           </p>
           <p className="muted" style={{ fontSize: "0.75rem", maxWidth: 620, lineHeight: 1.6 }}>
             CodeScenes is not affiliated with, sponsored by, or endorsed by Unity
-            Technologies or Anthropic. Unity is a trademark of Unity Technologies;
-            all other trademarks are the property of their respective owners.
-            Comparisons reflect our own testing and opinion as of publication.
+            Technologies. Unity is a trademark of Unity Technologies; all other
+            trademarks are the property of their respective owners. Comparisons
+            reflect our own testing and opinion as of publication.
           </p>
         </div>
       </div>
