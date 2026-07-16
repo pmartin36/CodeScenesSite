@@ -28,9 +28,10 @@ export function OriginStory() {
               </p>
               <p>
                 The Unity MCP solutions couldn&rsquo;t even produce a game. It was
-                always a jumbled error mess. My own build worked, but it cost a
-                fortune in tokens, because I was burning the model&rsquo;s budget
-                making it operate the editor one tool call at a time.
+                always a jumbled error-prone mess. So I built my own, and it worked,
+                but it cost a fortune in tokens, because I was burning the
+                model&rsquo;s budget making it operate the editor one tool call at a
+                time.
               </p>
 
               <blockquote
