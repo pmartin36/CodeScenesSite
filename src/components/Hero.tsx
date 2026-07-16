@@ -25,9 +25,10 @@ export function Hero() {
               Ditch Unity MCP solutions and collaborate with AI to build your scenes
               in{" "}
               <span style={{ color: "var(--text)" }}>code</span>, the language
-              it&rsquo;s actually fluent in, keeping your scene and the editor in
-              constant{" "}
-              <span style={{ color: "var(--text)" }}>two-way sync</span>.
+              it&rsquo;s actually fluent in. The AI works in code, you work in the
+              editor, and{" "}
+              <span style={{ color: "var(--text)" }}>two-way sync</span>{" "}keeps both
+              in agreement.
             </p>
           </Reveal>
 
