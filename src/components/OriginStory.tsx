@@ -62,7 +62,7 @@ export function OriginStory() {
               <p>
                 That&rsquo;s the whole idea behind CodeScenes: let the AI work in
                 code, the thing it&rsquo;s genuinely great at, and let you make it
-                sing.
+                feel alive.
               </p>
             </div>
           </Reveal>
