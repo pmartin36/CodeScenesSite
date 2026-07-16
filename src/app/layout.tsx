@@ -15,9 +15,9 @@ const geistMono = Geist_Mono({
 });
 
 const SITE_URL = "https://codescenes.dev";
-const TITLE = "CodeScenes — Build Unity scenes in code. AI's native language.";
+const TITLE = "CodeScenes · Build Unity scenes in code, AI's native language";
 const DESCRIPTION =
-  "AI can't speak Unity Editor. CodeScenes turns your Unity scene into one flat, diffable C# file and keeps code and scene in automatic two-way sync — so AI collaborates in the language it's actually good at.";
+  "AI can't speak Unity Editor. CodeScenes turns your Unity scene into one flat, diffable C# file and keeps code and scene in automatic two-way sync, so AI collaborates in the language it's actually good at.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

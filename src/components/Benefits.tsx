@@ -15,7 +15,7 @@ const FEATURES: Feature[] = [
     body: (
       <>
         Edit the code and the scene updates. Move something in the editor and the
-        code updates. It&rsquo;s invisible and automatic — no button to press, and
+        code updates. It&rsquo;s invisible and automatic. No button to press, and
         you&rsquo;re never trapped on one side.
       </>
     ),
@@ -26,7 +26,7 @@ const FEATURES: Feature[] = [
     body: (
       <>
         LLMs are fluent in symbolic code. Hand the model the whole scene as one
-        readable file it reads and edits in a single pass — not a stream of one-off
+        readable file it reads and edits in a single pass, not a stream of one-off
         editor commands.
       </>
     ),
@@ -42,12 +42,12 @@ const FEATURES: Feature[] = [
     title: "Validated by a compiler",
     body: (
       <>
-        The AI doesn&rsquo;t just generate a scene — it can compile it. If the C#
+        The AI doesn&rsquo;t just generate a scene, it can compile it. If the C#
         doesn&rsquo;t build, it isn&rsquo;t a valid scene, so broken output never
         reaches your project.
       </>
     ),
-    stat: <>Generate, validate, refactor, sanity-check — with a real safety net.</>,
+    stat: <>Generate, validate, refactor, and sanity-check, all with a real safety net.</>,
   },
   {
     icon: <IconLayout />,
@@ -55,7 +55,7 @@ const FEATURES: Feature[] = [
     body: (
       <>
         Exact coordinates are where LLMs slip. Layout helpers let the model position
-        objects relative to each other — describing intent instead of guessing
+        objects relative to each other, describing intent instead of guessing
         numbers.
       </>
     ),
@@ -65,7 +65,7 @@ const FEATURES: Feature[] = [
     title: "Scenes you can diff & review",
     body: (
       <>
-        Your scene is clean C# in git — real pull-request diffs, line-by-line
+        Your scene is clean C# in git: real pull-request diffs, line-by-line
         review, and <span className="icode">git blame</span> that means something.
       </>
     ),
@@ -89,7 +89,7 @@ const FEATURES: Feature[] = [
     stat: (
       <>
         MCP tool schemas can eat the majority of a context window before you type a
-        word — 72% in one measured setup.<Sup n={2} />
+        word. One measured setup hit 72%.<Sup n={2} />
       </>
     ),
   },
@@ -111,7 +111,7 @@ export function Benefits() {
           <Reveal delay={120}>
             <p className="lead" style={{ marginTop: 16 }}>
               The construction is commodity. The value is the durable, living
-              relationship between your code and your scene — and meeting AI in the
+              relationship between your code and your scene, and meeting AI in the
               medium it&rsquo;s genuinely good at.
             </p>
           </Reveal>

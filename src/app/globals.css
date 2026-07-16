@@ -551,13 +551,13 @@ a {
 @media (max-width: 759px) {
   .cmp-head { display: none; }
   .cmp-mcp::before {
-    content: "Unity MCP — ";
+    content: "Unity MCP: ";
     color: var(--text-muted);
     font-family: var(--font-mono);
     font-size: 0.75rem;
   }
   .cmp-cfs::before {
-    content: "CodeScenes — ";
+    content: "CodeScenes: ";
     color: var(--accent);
     font-family: var(--font-mono);
     font-size: 0.75rem;

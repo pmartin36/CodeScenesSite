@@ -67,7 +67,7 @@ export function Waitlist() {
               </h2>
               <p className="lead" style={{ marginTop: 14, maxWidth: 560, marginInline: "auto" }}>
                 It&rsquo;s in active development. Leave your email and you&rsquo;ll
-                get the demo, launch news, and an early look at the plugin — no spam,
+                get the demo, launch news, and an early look at the plugin. No spam,
                 no noise.
               </p>
 
@@ -127,7 +127,7 @@ export function Waitlist() {
 
               {state === "error" ? (
                 <p style={{ marginTop: 12, color: "var(--error)", fontSize: "0.85rem" }}>
-                  Something went wrong — please try again.
+                  Something went wrong. Please try again.
                 </p>
               ) : null}
             </div>

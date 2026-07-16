@@ -17,7 +17,7 @@ export function Help() {
           <Reveal delay={120}>
             <p className="lead" style={{ marginTop: 14 }}>
               CodeScenes is early and I&rsquo;d love your input on what to build.
-              Reach out — I read everything.
+              Reach out. I read everything.
             </p>
           </Reveal>
         </div>

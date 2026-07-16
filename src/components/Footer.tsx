@@ -37,7 +37,7 @@ export function Footer() {
             <Logo />
             <p className="muted" style={{ marginTop: 16, maxWidth: 320, fontSize: "0.9rem" }}>
               Build your Unity scenes in code. Edit them in the editor. Keep both in
-              sync — automatically.
+              sync, automatically.
             </p>
           </div>
 

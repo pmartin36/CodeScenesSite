@@ -18,9 +18,9 @@ export async function HowItWorks() {
           <Reveal delay={120}>
             <p className="lead" style={{ marginTop: 16 }}>
               Not a wall of YAML. A flat, readable C# builder your AI can generate,
-              validate, refactor, and sanity-check in one pass — a real compiler
-              guarantees it&rsquo;s a valid scene — and that you can diff, review, and
-              merge like any other code.
+              validate, refactor, and sanity-check in one pass. A real compiler
+              guarantees it&rsquo;s a valid scene, and you can diff, review, and merge
+              it like any other code.
             </p>
           </Reveal>
         </div>
@@ -39,8 +39,8 @@ export async function HowItWorks() {
                 <h3 className="h3">Edit either side. Never out of sync.</h3>
                 <p style={{ marginTop: 10 }}>
                   Drag <span className="icode">Player</span> somewhere in the Scene
-                  view and save. Your file rewrites itself to match — the right
-                  line, in place.
+                  view and save. Your file rewrites itself to match, updating the
+                  right line in place.
                 </p>
               </div>
 

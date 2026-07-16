@@ -7,7 +7,7 @@ const ROWS: Row[] = [
   {
     label: "The interface",
     mcp: "The AI drives the editor through dozens of granular tool calls, one action at a time.",
-    cfs: "The AI edits one readable C# file — the whole scene, in context.",
+    cfs: "The AI edits one readable C# file: the whole scene, in context.",
   },
   {
     label: "Context cost",
@@ -23,26 +23,26 @@ const ROWS: Row[] = [
     label: "Failure mode",
     mcp: (
       <>
-        Long tool sequences compound errors — a run can stall half-way, mid-mutation.
+        Long tool sequences compound errors. A run can stall half-way, mid-mutation.
         <Sup n={5} />
       </>
     ),
-    cfs: "An edit compiles atomically — it either applies cleanly or it doesn't. No half-built scene.",
+    cfs: "An edit compiles atomically. It either applies cleanly or it doesn't. No half-built scene.",
   },
   {
     label: "Version control",
     mcp: (
       <>
-        Still wrangling <span className="icode">.unity</span> YAML merges by hand —
-        you know the headache.<Sup n={1} />
+        Still wrangling <span className="icode">.unity</span> YAML merges by hand.
+        You know the headache.<Sup n={1} />
       </>
     ),
     cfs: "Real git diffs, pull-request review, and blame on your scene.",
   },
   {
     label: "What AI is good at",
-    mcp: "Reasoning about a 3D scene through text — the regime LLMs are weakest in.",
-    cfs: "Reading and writing symbolic code with explicit coordinates — their strength.",
+    mcp: "Reasoning about a 3D scene through text, the regime LLMs are weakest in.",
+    cfs: "Reading and writing symbolic code with explicit coordinates, right where they're strongest.",
   },
   {
     label: "Sync back",

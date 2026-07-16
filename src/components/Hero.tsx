@@ -22,10 +22,11 @@ export function Hero() {
 
           <Reveal delay={120}>
             <p className="lead" style={{ marginTop: 22 }}>
-              So stop making it drive the editor one tool call at a time. Ditch Unity
-              MCP and collaborate with AI to build your scenes in{" "}
-              <span style={{ color: "var(--text)" }}>code</span>{" "}— the language
-              it&rsquo;s actually fluent in — with your scene and the editor always in{" "}
+              Bolt AI onto the editor and it crawls, one tool call at a time. Ditch
+              Unity MCP and collaborate with AI to build your scenes in{" "}
+              <span style={{ color: "var(--text)" }}>code</span>, the language
+              it&rsquo;s actually fluent in, keeping your scene and the editor in
+              constant{" "}
               <span style={{ color: "var(--text)" }}>two-way sync</span>.
             </p>
           </Reveal>
@@ -103,7 +104,7 @@ function VideoPlaceholder() {
           </svg>
         </div>
         <span className="chip" style={{ borderColor: "var(--border-strong)" }}>
-          ● &nbsp;Watch the demo — coming soon
+          ● &nbsp;Demo coming soon
         </span>
       </div>
     </div>

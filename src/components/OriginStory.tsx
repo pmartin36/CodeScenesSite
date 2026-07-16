@@ -22,16 +22,15 @@ export function OriginStory() {
               style={{ marginTop: 24, fontSize: "1.05rem", lineHeight: 1.7 }}
             >
               <p>
-                While I was working at Meta, I set myself a goal: one-shot a game —
-                describe it to an AI and get something real back. I tried every
-                AI-to-Unity tool I could find, Unity MCP included. None of them
-                worked for me.
+                While I was working at Meta, I set myself a goal: one-shot a game.
+                Describe it to an AI, get something real back. So I tried every
+                AI-to-Unity tool I could find, Unity MCP included.
               </p>
               <p>
-                So I rolled my own. That one actually worked — but every game I built
-                with it cost thousands of dollars in tokens, because I was burning
-                the model&rsquo;s budget making it operate the editor one tool call
-                at a time.
+                The Unity MCP solutions couldn&rsquo;t even produce a game. It was
+                always a jumbled error mess. My own build worked, but it cost a
+                fortune in tokens, because I was burning the model&rsquo;s budget
+                making it operate the editor one tool call at a time.
               </p>
 
               <blockquote
@@ -47,14 +46,15 @@ export function OriginStory() {
                 }}
               >
                 I was fighting the whole system to make AI &ldquo;speak
-                Unity.&rdquo; I should have been meeting it in its mother tongue.
+                Unity.&rdquo; I should have been building around AI&rsquo;s
+                strengths, not my own.
               </blockquote>
 
               <p>
-                That&rsquo;s the whole idea behind CodeScenes. Stop making the AI
-                drive the editor one command at a time. Let it write code — the thing
-                it&rsquo;s genuinely great at — and keep that code and the live scene
-                in sync, both ways, so you never have to choose between them.
+                That&rsquo;s the whole idea behind CodeScenes. Let the AI work in
+                code, the thing it&rsquo;s genuinely great at, and keep that code and
+                the live scene in agreement both ways, so you never have to choose
+                between them.
               </p>
             </div>
           </Reveal>
