@@ -52,20 +52,17 @@ export function OriginStory() {
               </blockquote>
 
               <p>
-                That&rsquo;s the whole idea behind CodeScenes. Let the AI work in
-                code, the thing it&rsquo;s genuinely great at, and keep that code and
-                the live scene in agreement both ways, so you never have to choose
-                between them.
-              </p>
-              <p>
-                But AI only gets a scene most of the way there. Games are felt, not
-                just assembled, and that last stretch is your eye: nudging a
-                position, tuning a curve, getting the feel right by hand. Those edits
+                But games are felt, not just assembled, and that last stretch is your eye: 
+                nudging a position, tuning a curve, getting the feel right by hand. Those edits
                 have to survive, or the tool is worthless the moment the AI&rsquo;s
                 next pass overwrites them. So CodeScenes treats what you do in the
                 editor as truth too. Your changes flow back into the code, and the AI
-                builds on them instead of stepping on them. You keep the discerning
-                eye; the AI keeps up.
+                builds on them instead of stepping on them.
+              </p>
+              <p>
+                That&rsquo;s the whole idea behind CodeScenes: let the AI work in
+                code, the thing it&rsquo;s genuinely great at, and let you make it
+                sing.
               </p>
             </div>
           </Reveal>
