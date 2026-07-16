@@ -22,8 +22,8 @@ export function Hero() {
 
           <Reveal delay={120}>
             <p className="lead" style={{ marginTop: 22 }}>
-              Bolt AI onto the editor and it crawls, one tool call at a time. Ditch
-              Unity MCP and collaborate with AI to build your scenes in{" "}
+              Ditch Unity MCP solutions and collaborate with AI to build your scenes
+              in{" "}
               <span style={{ color: "var(--text)" }}>code</span>, the language
               it&rsquo;s actually fluent in, keeping your scene and the editor in
               constant{" "}
