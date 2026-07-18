@@ -28,11 +28,6 @@ export async function CodePanel({
       style={{ position: "relative" }}
     >
       <div className="code-titlebar">
-        <span className="mac-dots" aria-hidden="true">
-          <i />
-          <i />
-          <i />
-        </span>
         <span className="code-tab">{filename}</span>
         <span className="code-lang">C#</span>
       </div>

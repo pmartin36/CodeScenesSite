@@ -342,17 +342,6 @@ a {
   background: #111319;
   border-bottom: 1px solid var(--border);
 }
-.mac-dots {
-  display: inline-flex;
-  gap: 8px;
-}
-.mac-dots i {
-  width: 12px;
-  height: 12px;
-  border-radius: 9999px;
-  background: var(--border-strong);
-  display: block;
-}
 .code-tab {
   font-family: var(--font-mono);
   font-size: 0.8125rem;
