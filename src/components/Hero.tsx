@@ -49,10 +49,10 @@ export function Hero() {
         </div>
       </div>
 
-      {/* wide demo / video placeholder */}
+      {/* wide demo video */}
       <Reveal delay={200}>
         <div className="video-band">
-          <VideoPlaceholder />
+          <HeroVideo />
         </div>
       </Reveal>
 
@@ -61,53 +61,26 @@ export function Hero() {
   );
 }
 
-function VideoPlaceholder() {
+function HeroVideo() {
   return (
     <div className="video-frame video-frame--wide">
-      <div
-        aria-hidden="true"
-        style={{
-          position: "absolute",
-          inset: 0,
-          backgroundImage:
-            "radial-gradient(45% 70% at 50% 45%, rgba(52,226,155,0.09), transparent 70%), linear-gradient(to bottom, rgba(255,255,255,0.02), transparent)",
-        }}
-      />
-      <div aria-hidden="true" className="grid-mask" style={{ opacity: 0.55 }} />
-
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: 18,
-        }}
+      <video
+        className="video-frame__media video-frame__video"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        poster="/hero-demo-poster.webp"
+        aria-label="CodeScenes keeping a C# scene builder and the Unity Editor in two-way sync"
       >
-        <div
-          aria-hidden="true"
-          style={{
-            width: 76,
-            height: 76,
-            borderRadius: "9999px",
-            border: "1px solid var(--border-strong)",
-            background: "rgba(52,226,155,0.10)",
-            boxShadow: "0 0 44px -8px rgba(52,226,155,0.5)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="var(--accent)" aria-hidden="true">
-            <path d="M8 5.5v13l11-6.5-11-6.5Z" />
-          </svg>
-        </div>
-        <span className="chip" style={{ borderColor: "var(--border-strong)" }}>
-          ● &nbsp;Demo coming soon
-        </span>
-      </div>
+        <source src="/hero-demo.mp4" type="video/mp4" />
+      </video>
+      <img
+        className="video-frame__media video-frame__still"
+        src="/hero-demo-poster.webp"
+        alt="CodeScenes keeping a C# scene builder and the Unity Editor in two-way sync"
+      />
     </div>
   );
 }

@@ -497,18 +497,38 @@ a {
 /* wide, full-bleed demo band under the hero headline */
 .video-band {
   width: 100%;
-  max-width: 1400px;
   margin-inline: auto;
+  margin-top: 40px;
   padding-inline: 14px;
 }
 @media (min-width: 768px) {
-  .video-band { padding-inline: 40px; }
+  .video-band {
+    /* 80vw, capped at the source width so the clip never upscales */
+    width: 80vw;
+    max-width: 1918px;
+    margin-top: 72px;
+    padding-inline: 0;
+  }
 }
+/* matches the native aspect of hero-demo.mp4 (1918x828) */
 .video-frame--wide {
-  aspect-ratio: 2.35 / 1;
+  aspect-ratio: 1918 / 828;
 }
-@media (max-width: 640px) {
-  .video-frame--wide { aspect-ratio: 4 / 3; }
+
+.video-frame__media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.video-frame__still { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .video-frame__video { display: none; }
+  .video-frame__still { display: block; }
 }
 
 /* floating callout chip on a code line */

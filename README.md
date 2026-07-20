@@ -40,7 +40,7 @@ Deploy `./out` to Cloudflare Pages (build command `npm run build`, output dir `o
 - [ ] Wire the waitlist form to a real provider (Buttondown / ConvertKit / a
       Cloudflare Pages Function) via `WAITLIST_ENDPOINT`. Until then it only shows a
       local success state — **it does not store emails**.
-- [ ] Drop the demo video into the hero (`src/components/Hero.tsx`, `VideoPlaceholder`).
+- [x] Drop the demo video into the hero (`src/components/Hero.tsx`, `HeroVideo`).
 - [ ] Replace the placeholder testimonial slots with real quotes.
 - [ ] Add a social/OG share image.
 - [ ] Have an attorney glance at the comparison copy before launch (see
