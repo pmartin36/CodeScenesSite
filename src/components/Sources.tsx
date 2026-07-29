@@ -29,6 +29,11 @@ const SOURCES: { n: number; text: string; url: string }[] = [
     text: "MCP-for-Unity (CoplayDev) docs: advertises “48 tools across 10 groups” exposed to the model.",
     url: "https://coplaydev.github.io/unity-mcp/",
   },
+  {
+    n: 7,
+    text: "Unity CLI docs: a command-line tool (beta) to install editors, open projects, and run builds and tests from the terminal.",
+    url: "https://docs.unity.com/en-us/unity-cli",
+  },
 ];
 
 export function Sources() {

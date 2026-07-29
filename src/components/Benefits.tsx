@@ -56,13 +56,19 @@ const FEATURES: Feature[] = [
     stat: <>And because your scene is C#, invalid output won&rsquo;t even compile.</>,
   },
   {
-    icon: <IconLayout />,
-    title: "Place things relatively",
+    icon: <IconTerminal />,
+    title: "Works with Unity CLI",
     body: (
       <>
-        Exact coordinates are where LLMs slip. Layout helpers let the model position
-        objects relative to each other, describing intent instead of guessing
-        numbers.
+        For human-out-of-the-loop workflows, combine CodeScenes with the Unity CLI to
+        build and test scenes autonomously. Nothing special connects them: the scene is
+        just code, so the CLI drives it like any other project.
+      </>
+    ),
+    stat: (
+      <>
+        Your agent builds and tests it from the command line, then fixes its own
+        scene.<Sup n={7} />
       </>
     ),
   },
@@ -197,12 +203,11 @@ function IconCheck() {
     </svg>
   );
 }
-function IconLayout() {
+function IconTerminal() {
   return (
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <rect x="3" y="4" width="8" height="7" rx="1.6" stroke="currentColor" strokeWidth="1.6" />
-      <rect x="14" y="4" width="7" height="12" rx="1.6" stroke="currentColor" strokeWidth="1.6" />
-      <rect x="3" y="14" width="8" height="6" rx="1.6" stroke="currentColor" strokeWidth="1.6" />
+      <rect x="3" y="5" width="18" height="14" rx="2.2" stroke="currentColor" strokeWidth="1.6" />
+      <path d="M7 10l3 2-3 2M13 15h4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }

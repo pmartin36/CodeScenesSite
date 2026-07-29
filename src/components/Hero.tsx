@@ -22,8 +22,7 @@ export function Hero() {
 
           <Reveal delay={120}>
             <p className="lead" style={{ marginTop: 22 }}>
-              Ditch Unity MCP solutions and collaborate with AI to build your scenes
-              in{" "}
+              Collaborate with AI to build your scenes in{" "}
               <span style={{ color: "var(--text)" }}>code</span>, the language
               it&rsquo;s actually fluent in. The AI works in code, you work in the
               editor, and{" "}
