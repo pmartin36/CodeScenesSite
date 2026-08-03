@@ -39,6 +39,9 @@ yarn-error.log*
 # firebase deploy cache
 /.firebase/
 
+# firebase emulator logs
+*-debug.log
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
