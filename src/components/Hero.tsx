@@ -1,3 +1,4 @@
+import { NotifyLink } from "./NotifyLink";
 import { Reveal } from "./Reveal";
 
 export function Hero() {
@@ -40,9 +41,16 @@ export function Hero() {
                 <span className="soon-dot" aria-hidden="true" />
                 Get the plugin
               </button>
-              <span className="muted" style={{ fontFamily: "var(--font-mono)", fontSize: "0.8rem" }}>
-                Launching soon
-              </span>
+              <div
+                className="flex items-center gap-2"
+                style={{ fontFamily: "var(--font-mono)", fontSize: "0.8rem" }}
+              >
+                <span className="muted">Launching soon</span>
+                <span className="muted" aria-hidden="true">
+                  ·
+                </span>
+                <NotifyLink className="link-quiet link-quiet-mono" />
+              </div>
             </div>
           </Reveal>
         </div>

@@ -2,11 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { Logo } from "./Logo";
+import { NotifyLink } from "./NotifyLink";
 
 const NAV = [
   { label: "Features", href: "#features" },
   { label: "How it works", href: "#how" },
-  { label: "Origin story", href: "#origin" },
   { label: "Help", href: "#help" },
 ];
 
@@ -52,9 +52,10 @@ export function Header() {
 
           {/* right: CTA (desktop) */}
           <div
-            className="hidden md:flex items-center justify-end gap-3"
+            className="hidden md:flex items-center justify-end gap-4"
             style={{ flex: 1 }}
           >
+            <NotifyLink className="link-quiet link-quiet-sm" />
             <button
               type="button"
               className="btn btn-primary btn-sm is-disabled"
@@ -118,6 +119,12 @@ export function Header() {
               <span className="soon-dot" aria-hidden="true" />
               Get the plugin
             </button>
+            <div style={{ padding: "16px 4px 0", textAlign: "center" }}>
+              <NotifyLink
+                className="link-quiet"
+                onActivate={() => setOpen(false)}
+              />
+            </div>
           </nav>
         </div>
       ) : null}

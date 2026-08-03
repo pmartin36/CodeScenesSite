@@ -7,10 +7,11 @@ import { OriginStory } from "@/components/OriginStory";
 import { Help } from "@/components/Help";
 import { Sources } from "@/components/Sources";
 import { Footer } from "@/components/Footer";
+import { NotifyProvider } from "@/components/NotifyProvider";
 
 export default function Home() {
   return (
-    <>
+    <NotifyProvider>
       <Header />
       <main className="flex-1">
         <Hero />
@@ -22,6 +23,6 @@ export default function Home() {
         <Sources />
       </main>
       <Footer />
-    </>
+    </NotifyProvider>
   );
 }

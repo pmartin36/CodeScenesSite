@@ -1,7 +1,21 @@
 {
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "functions": {
+    "source": "functions",
+    "predeploy": ["npm --prefix functions install", "npm --prefix functions run build"]
+  },
   "hosting": {
     "public": "out",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "rewrites": [
+      {
+        "source": "/api/subscribe",
+        "function": { "functionId": "subscribe", "region": "us-central1" }
+      }
+    ],
     "headers": [
       {
         "source": "**/*.@(js|css|woff|woff2|ttf|otf|svg|png|jpg|jpeg|gif|webp|avif|ico)",
