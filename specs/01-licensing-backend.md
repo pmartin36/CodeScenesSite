@@ -49,6 +49,13 @@ GUMROAD_PRODUCT_ID  = "d_bOiSZquNziUu2K45OHIA=="   // functions/.env, not a secr
 > `success: true` before the function depends on it. The product also currently reports
 > `is_published: false`, so retest after publishing.
 
+> **The CTA destination depends on an unsettled distribution question.** Shipping a free or trial
+> listing on the Unity Asset Store while selling the license off-store runs into Provider Agreement
+> §4.9.1.2, and hosting the download on GitHub instead of Gumroad does not change that. See
+> [`research/04-asset-store-distribution.md`](../research/04-asset-store-distribution.md). This spec
+> assumes off-store purchase via Gumroad; if the product also ships on the Asset Store, a
+> store-sold copy carries Unity's own per-seat EULA and never touches this backend.
+
 **Build:** a `GUMROAD_PRODUCT_URL` constant and a Buy CTA that opens it. Decide whether the
 existing `Waitlist` section is replaced by the Buy CTA at launch or the two coexist during the
 pre-launch window; `WAITLIST_ENDPOINT` is still unwired (`src/lib/site.ts:14`) and stores nothing.

@@ -1,4 +1,5 @@
 import { NotifyLink } from "./NotifyLink";
+import { GetPluginButton } from "./GetPluginButton";
 import { Reveal } from "./Reveal";
 
 export function Hero() {
@@ -37,10 +38,7 @@ export function Hero() {
               className="flex flex-col items-center gap-3"
               style={{ marginTop: 32 }}
             >
-              <button type="button" className="btn btn-primary is-disabled" aria-disabled="true">
-                <span className="soon-dot" aria-hidden="true" />
-                Get the plugin
-              </button>
+              <GetPluginButton />
               <div
                 className="flex items-center gap-2"
                 style={{ fontFamily: "var(--font-mono)", fontSize: "0.8rem" }}

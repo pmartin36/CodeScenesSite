@@ -422,6 +422,146 @@ a {
   .modal-panel { padding: 24px 20px; }
 }
 
+/* --- get-the-plugin modal: install instructions, Asset Store as the alternate --- */
+.modal-panel-wide { max-width: 640px; }
+
+.plan-soon {
+  display: inline-block;
+  padding: 3px 10px;
+  border: 1px solid var(--border-strong);
+  border-radius: 9999px;
+  background: var(--surface-2);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+
+.soon-facts {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+.soon-facts li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.soon-facts li::before {
+  content: "";
+  flex: none;
+  width: 5px;
+  height: 5px;
+  margin-top: 9px;
+  border-radius: 9999px;
+  background: var(--accent);
+  opacity: 0.75;
+}
+
+.soon-line {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.install-steps {
+  margin-top: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  counter-reset: step;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+.install-steps li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  counter-increment: step;
+}
+.install-steps li::before {
+  content: counter(step);
+  flex: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 9999px;
+  border: 1px solid var(--border-strong);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  display: grid;
+  place-items: center;
+}
+.install-steps strong { color: var(--text); font-weight: 550; }
+
+.copy-field {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+  margin-top: 12px;
+  padding: 8px 8px 8px 12px;
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+}
+.copy-field code {
+  flex: 1;
+  min-width: 0;
+  overflow-x: auto;
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1.9;
+  color: var(--accent);
+}
+.copy-field button {
+  flex: none;
+  padding-inline: 10px;
+  border: 1px solid var(--border-strong);
+  border-radius: 4px;
+  background: var(--surface-2);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  cursor: pointer;
+  transition: color 150ms ease, border-color 150ms ease;
+}
+.copy-field button:hover { color: var(--text); border-color: #3a3f4a; }
+
+.install-cta { width: 100%; margin-top: 24px; }
+.install-note {
+  margin-top: 10px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+}
+
+.alt-buy {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px;
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+.alt-buy a {
+  color: var(--accent);
+  text-underline-offset: 4px;
+}
+.alt-buy a:hover { color: var(--accent-hover); text-decoration: underline; }
+
+
+
 /* ============================================================
    Chip / tag
    ============================================================ */

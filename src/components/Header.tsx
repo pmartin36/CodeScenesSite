@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { Logo } from "./Logo";
 import { NotifyLink } from "./NotifyLink";
+import { GetPluginButton } from "./GetPluginButton";
 
 const NAV = [
   { label: "Features", href: "#features" },
@@ -56,15 +57,7 @@ export function Header() {
             style={{ flex: 1 }}
           >
             <NotifyLink className="link-quiet link-quiet-sm" />
-            <button
-              type="button"
-              className="btn btn-primary btn-sm is-disabled"
-              aria-disabled="true"
-              title="Launching soon"
-            >
-              <span className="soon-dot" aria-hidden="true" />
-              Get the plugin
-            </button>
+            <GetPluginButton className="btn btn-primary btn-sm" />
           </div>
 
           {/* mobile: hamburger */}
@@ -110,15 +103,12 @@ export function Header() {
                 {item.label}
               </a>
             ))}
-            <button
-              type="button"
-              className="btn btn-primary is-disabled"
-              aria-disabled="true"
-              style={{ marginTop: 12 }}
-            >
-              <span className="soon-dot" aria-hidden="true" />
-              Get the plugin
-            </button>
+            <div style={{ marginTop: 12 }}>
+              <GetPluginButton
+                className="btn btn-primary"
+                onActivate={() => setOpen(false)}
+              />
+            </div>
             <div style={{ padding: "16px 4px 0", textAlign: "center" }}>
               <NotifyLink
                 className="link-quiet"

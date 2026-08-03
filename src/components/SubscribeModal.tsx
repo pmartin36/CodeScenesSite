@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { subscribe } from "@/lib/subscribe";
+import { NOTIFY_PROMISE } from "./NotifyLink";
 
 type State = "idle" | "loading" | "pending" | "subscribed" | "already" | "error";
 
@@ -113,8 +114,7 @@ export function SubscribeModal({
         ) : (
           <>
             <p style={{ marginTop: 12, fontSize: "0.95rem" }}>
-              Leave your email and you&rsquo;ll get one message when the plugin is
-              out, plus the occasional build update. No spam, no noise.
+              Leave your email. {NOTIFY_PROMISE} No spam, no noise.
             </p>
 
             <form onSubmit={onSubmit} className="modal-form" noValidate>

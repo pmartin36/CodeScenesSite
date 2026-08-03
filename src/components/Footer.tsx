@@ -9,7 +9,6 @@ const COLS: { title: string; links: { label: string; href: string; ext?: boolean
     links: [
       { label: "Features", href: "#features" },
       { label: "How it works", href: "#how" },
-      { label: "Origin story", href: "#origin" },
     ],
   },
   {
