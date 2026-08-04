@@ -16,6 +16,7 @@ const COLS: { title: string; links: { label: string; href: string; ext?: boolean
     links: [
       { label: "Help", href: "#help" },
       { label: "Sources", href: "#sources" },
+      { label: "Privacy", href: "/privacy/" },
     ],
   },
   {

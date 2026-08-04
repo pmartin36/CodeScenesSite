@@ -1,6 +1,7 @@
 import { NotifyLink } from "./NotifyLink";
 import { GetPluginButton } from "./GetPluginButton";
 import { Reveal } from "./Reveal";
+import { HeroVideo } from "./HeroVideo";
 
 export function Hero() {
   return (
@@ -38,7 +39,7 @@ export function Hero() {
               className="flex flex-col items-center gap-3"
               style={{ marginTop: 32 }}
             >
-              <GetPluginButton />
+              <GetPluginButton source="hero" />
               <div
                 className="flex items-center gap-2"
                 style={{ fontFamily: "var(--font-mono)", fontSize: "0.8rem" }}
@@ -47,7 +48,7 @@ export function Hero() {
                 <span className="muted" aria-hidden="true">
                   ·
                 </span>
-                <NotifyLink className="link-quiet link-quiet-mono" />
+                <NotifyLink source="hero" className="link-quiet link-quiet-mono" />
               </div>
             </div>
           </Reveal>
@@ -63,29 +64,5 @@ export function Hero() {
 
       <div style={{ height: 32 }} />
     </section>
-  );
-}
-
-function HeroVideo() {
-  return (
-    <div className="video-frame video-frame--wide">
-      <video
-        className="video-frame__media video-frame__video"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        poster="/hero-demo-poster.webp"
-        aria-label="CodeScenes keeping a C# scene builder and the Unity Editor in two-way sync"
-      >
-        <source src="/hero-demo.mp4" type="video/mp4" />
-      </video>
-      <img
-        className="video-frame__media video-frame__still"
-        src="/hero-demo-poster.webp"
-        alt="CodeScenes keeping a C# scene builder and the Unity Editor in two-way sync"
-      />
-    </div>
   );
 }

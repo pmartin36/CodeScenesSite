@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Analytics } from "@/components/Analytics";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -66,6 +67,7 @@ export default function RootLayout({
           <style>{`.reveal{opacity:1 !important;transform:none !important}`}</style>
         </noscript>
         {children}
+        <Analytics />
       </body>
     </html>
   );

@@ -12,7 +12,11 @@ export const CONTACT_EMAIL = "paul@codescenes.dev";
 // is licensed under Unity's own per-seat EULA, the direct copy uses a license key.
 // See specs/01-licensing-backend.md and research/04-asset-store-distribution.md.
 export const PRICE_USD = 15;
-export const GUMROAD_PRODUCT_URL = "https://paulmartindev.gumroad.com/l/zuwqt";
+// Tagged so Gumroad's own referrer report can be reconciled against the
+// outbound_clicked count here. The purchase itself happens off-site and is not
+// visible to this site's analytics.
+export const GUMROAD_PRODUCT_URL =
+  "https://paulmartindev.gumroad.com/l/zuwqt?utm_source=codescenes&utm_medium=site&utm_campaign=get_plugin";
 
 // TODO(paul): real listing URL once the Asset Store submission is live.
 export const ASSET_STORE_URL = "";

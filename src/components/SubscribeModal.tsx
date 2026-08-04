@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { subscribe } from "@/lib/subscribe";
+import { track } from "@/lib/analytics";
 import { NOTIFY_PROMISE } from "./NotifyLink";
 
 type State = "idle" | "loading" | "pending" | "subscribed" | "already" | "error";
@@ -22,6 +23,10 @@ export function SubscribeModal({
 }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  // The input is autofocused on open, so focus says nothing. First keystroke is
+  // the real intent signal. NotifyProvider remounts this on every open, so once
+  // per instance is once per time the visitor was shown the form.
+  const typedOnce = useRef(false);
   const [email, setEmail] = useState("");
   const [honeypot, setHoneypot] = useState("");
   const [state, setState] = useState<State>("idle");
@@ -34,6 +39,7 @@ export function SubscribeModal({
     if (isOpen) {
       if (!el.open) el.showModal();
       inputRef.current?.focus();
+      track("subscribe_modal_viewed");
     } else if (el.open) {
       el.close();
     }
@@ -54,11 +60,18 @@ export function SubscribeModal({
     setState("loading");
     setError("");
 
+    // A filled honeypot is a bot. Keeping those out of the funnel entirely, or
+    // every conversion rate on this form is measured against inflated attempts.
+    const human = !honeypot;
+    if (human) track("subscribe_submitted");
+
     const result = await subscribe(email, honeypot);
     if (result.ok) {
+      if (human) track("subscribe_completed", { state: result.state });
       setState(result.state);
       setEmail("");
     } else {
+      if (human) track("subscribe_failed", { message: result.message });
       setState("error");
       setError(result.message);
     }
@@ -128,7 +141,13 @@ export function SubscribeModal({
                   type="email"
                   required
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => {
+                    if (!typedOnce.current && e.target.value) {
+                      typedOnce.current = true;
+                      track("subscribe_typing_started");
+                    }
+                    setEmail(e.target.value);
+                  }}
                   placeholder="you@example.com"
                   autoComplete="email"
                   className="field"
@@ -162,7 +181,13 @@ export function SubscribeModal({
               </p>
             ) : null}
 
-            <p className="modal-fineprint">Unsubscribe any time.</p>
+            <p className="modal-fineprint">
+              Unsubscribe any time. See the{" "}
+              <a href="/privacy/" className="link-quiet">
+                privacy notice
+              </a>
+              .
+            </p>
           </>
         )}
       </div>

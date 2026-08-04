@@ -56,8 +56,8 @@ export function Header() {
             className="hidden md:flex items-center justify-end gap-4"
             style={{ flex: 1 }}
           >
-            <NotifyLink className="link-quiet link-quiet-sm" />
-            <GetPluginButton className="btn btn-primary btn-sm" />
+            <NotifyLink source="header" className="link-quiet link-quiet-sm" />
+            <GetPluginButton source="header" className="btn btn-primary btn-sm" />
           </div>
 
           {/* mobile: hamburger */}
@@ -105,12 +105,14 @@ export function Header() {
             ))}
             <div style={{ marginTop: 12 }}>
               <GetPluginButton
+                source="mobile_menu"
                 className="btn btn-primary"
                 onActivate={() => setOpen(false)}
               />
             </div>
             <div style={{ padding: "16px 4px 0", textAlign: "center" }}>
               <NotifyLink
+                source="mobile_menu"
                 className="link-quiet"
                 onActivate={() => setOpen(false)}
               />

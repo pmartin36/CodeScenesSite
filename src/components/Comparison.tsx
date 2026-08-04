@@ -53,7 +53,7 @@ const ROWS: Row[] = [
 
 export function Comparison() {
   return (
-    <section className="section" style={{ background: "var(--surface)", borderBlock: "1px solid var(--border)" }}>
+    <section id="compare" className="section" style={{ background: "var(--surface)", borderBlock: "1px solid var(--border)" }}>
       <div className="container">
         <div className="prose-col" style={{ textAlign: "center" }}>
           <Reveal>

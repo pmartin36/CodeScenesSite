@@ -8,6 +8,7 @@ import {
   PACKAGE_GIT_URL,
   PRICE_USD,
 } from "@/lib/site";
+import { track } from "@/lib/analytics";
 import { NotifyLink, NOTIFY_PROMISE } from "./NotifyLink";
 
 const STEPS = [
@@ -37,7 +38,10 @@ function CopyField({ value }: { value: string }) {
         type="button"
         onClick={() => {
           navigator.clipboard?.writeText(value).then(
-            () => setCopied(true),
+            () => {
+              setCopied(true);
+              track("install_url_copied");
+            },
             () => setCopied(false),
           );
         }}
@@ -66,6 +70,7 @@ export function GetPluginModal({
     if (isOpen) {
       if (!el.open) el.showModal();
       closeRef.current?.focus();
+      track("plugin_modal_viewed");
     } else if (el.open) {
       el.close();
     }
@@ -133,6 +138,7 @@ export function GetPluginModal({
 
             {/* closes this dialog first, so the two <dialog>s never stack */}
             <NotifyLink
+              source="plugin_modal"
               className="btn btn-primary install-cta"
               onActivate={onClose}
             />
@@ -159,6 +165,7 @@ export function GetPluginModal({
               target="_blank"
               rel="noreferrer"
               className="btn btn-primary install-cta"
+              onClick={() => track("outbound_clicked", { destination: "gumroad" })}
             >
               Purchase a license (${PRICE_USD})
             </a>
@@ -169,7 +176,12 @@ export function GetPluginModal({
             {ASSET_STORE_URL ? (
               <div className="alt-buy">
                 <span>Prefer the Asset Store?</span>
-                <a href={ASSET_STORE_URL} target="_blank" rel="noreferrer">
+                <a
+                  href={ASSET_STORE_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={() => track("outbound_clicked", { destination: "asset_store" })}
+                >
                   Buy it there instead (${PRICE_USD})
                 </a>
               </div>

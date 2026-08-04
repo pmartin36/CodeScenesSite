@@ -1,5 +1,6 @@
 "use client";
 
+import { track, type CtaSource } from "@/lib/analytics";
 import { useNotify } from "./NotifyProvider";
 
 export const NOTIFY_LABEL = "Get notified";
@@ -10,9 +11,11 @@ export const NOTIFY_PROMISE =
   "One message when it ships, plus occasional updates after.";
 
 export function NotifyLink({
+  source,
   className = "link-quiet",
   onActivate,
 }: {
+  source: CtaSource;
   className?: string;
   onActivate?: () => void;
 }) {
@@ -23,6 +26,7 @@ export function NotifyLink({
       type="button"
       className={className}
       onClick={() => {
+        track("cta_clicked", { cta: "notify", source });
         onActivate?.();
         open();
       }}
