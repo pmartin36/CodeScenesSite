@@ -285,11 +285,14 @@ a {
    it cannot fight the surrounding size the way the standalone link styles do.
    Weight and color carry it, matching the other link styles. */
 .link-inline {
-  color: var(--text);
+  color: inherit;
   font: inherit;
   font-weight: 600;
   text-decoration: none;
+  transition: color 150ms ease;
 }
+
+.link-inline:hover { color: var(--text); }
 
 /* ============================================================
    Modal (native <dialog>)
