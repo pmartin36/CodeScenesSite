@@ -272,29 +272,24 @@ a {
   text-underline-offset: 4px;
   white-space: nowrap;
 }
-.link-quiet:hover {
-  color: var(--text);
-  text-decoration: underline;
-}
+.link-quiet:hover { color: var(--text); }
 .link-quiet-sm { font-size: 0.875rem; }
 .link-quiet-mono {
   font-family: var(--font-mono);
   font-size: 0.8rem;
   color: var(--accent);
 }
-.link-quiet-mono:hover { color: var(--accent-hover); }
+.link-quiet-mono:hover { color: var(--text); }
 
 /* Link sitting inside running text. Inherits the type of whatever wraps it, so
-   it cannot fight the surrounding size the way the standalone link styles do. */
+   it cannot fight the surrounding size the way the standalone link styles do.
+   Weight and color carry it, matching the other link styles. */
 .link-inline {
   color: var(--text);
   font: inherit;
+  font-weight: 600;
   text-decoration: none;
-  text-underline-offset: 3px;
-  transition: color 150ms ease;
 }
-
-.link-inline:hover { text-decoration: underline; }
 
 /* ============================================================
    Modal (native <dialog>)
