@@ -64,6 +64,17 @@ for (const type of api.types) {
   check(sigs === expected, `${type.id} highlights ${expected} signatures (saw ${sigs})`);
 
   check(await noSidewaysScroll(page), `${type.id} does not scroll sideways`);
+
+  // The code panel's full-bleed diff rule uses negative inline margins sized to that panel's
+  // padding. Applied to a signature block it overhangs, and every block gets a scrollbar it
+  // does not need. Signatures must have no inline margin at all.
+  const bled = await page.$$eval(".doc-sig .shiki .line", (els) =>
+    els.filter((el) => {
+      const s = getComputedStyle(el);
+      return s.marginLeft !== "0px" || s.marginRight !== "0px";
+    }).length
+  );
+  check(bled === 0, `${type.id} signatures carry no full-bleed margin (${bled} lines)`);
 }
 
 // --- a generated cross-type link actually resolves ---

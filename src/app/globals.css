@@ -693,7 +693,10 @@ a {
 .code-window pre.shiki code {
   display: grid; /* one row per line, enables full-bleed diff tint */
 }
-.shiki .line {
+/* Scoped to .code-window: the negative margin is what bleeds the diff tint to the panel edge,
+   and it is measured against that panel's 22px padding. Unscoped, it overhangs any other shiki
+   block by the difference and gives it a permanent horizontal scrollbar. */
+.code-window .shiki .line {
   display: block;
   position: relative;
   padding-inline: 22px;
@@ -701,21 +704,21 @@ a {
   border-left: 2px solid transparent;
 }
 /* diff rows produced by transformerNotationDiff */
-.shiki .line.diff.add {
+.code-window .shiki .line.diff.add {
   background: rgba(52, 226, 155, 0.10);
   border-left-color: var(--accent);
 }
-.shiki .line.diff.remove {
+.code-window .shiki .line.diff.remove {
   background: rgba(255, 99, 99, 0.09);
   border-left-color: #ff6363;
 }
-.shiki .line.diff.add::before {
+.code-window .shiki .line.diff.add::before {
   content: "+";
   position: absolute;
   left: 7px;
   color: var(--accent);
 }
-.shiki .line.diff.remove::before {
+.code-window .shiki .line.diff.remove::before {
   content: "-";
   position: absolute;
   left: 7px;
