@@ -23,6 +23,28 @@ surface, to `docs.unity3d.com/ScriptReference/<Name>.html` when it names a Unity
 code otherwise. An unqualified cref resolves against the type the comment sits on, so
 `<see cref="Evaluate"/>` inside `FitSize` links to `FitSize#evaluate`.
 
+A note for maintainers goes in a `//` comment on the same declaration, never a `///` one. `//`
+comments are invisible to the generator, so the constraint stays recorded next to the code it
+governs without shipping to users.
+
+`verify-docs.mjs` fails the run when a published string contains a milestone tag, a spec reference,
+a pipeline task id, an internal type path, or `MUST`. Widen the `INTERNAL` list in that script when a
+new shape of internal note shows up rather than fixing the one instance.
+
+### Hiding a member that is public for mechanism
+
+Some members are `public` only because another assembly calls them across the asmdef boundary, not
+because a user should call them. Mark those:
+
+```csharp
+[EditorBrowsable(EditorBrowsableState.Never)]
+public void ResetBaseline() { ... }
+```
+
+DocGen skips anything carrying that attribute, and Unity's IDE integrations drop it from IntelliSense
+for the same reason. Prefer it over making the member `internal`, which breaks the cross-assembly
+call. `FitSize.ResetBaseline` and `SurfaceSnap.ResetBaseline` use it today.
+
 ## Step 1 — CodeScenesUnity
 
 Edit the source: doc comments and public members in `com.codescenes/Runtime/`, or the SB#### table in
@@ -141,12 +163,15 @@ arguments, so the site omits it rather than printing `{0}`.
 | `scripts/gen-api-mirror.mjs` | Writes `public/docs/api.md` and `public/llms.txt`. Runs from `prebuild`. |
 | `scripts/verify-docs.mjs` | The browser check. |
 
-## Outstanding
+## Reviewing what a change publishes
 
-Five doc comments read as internal notes and are currently published: the `FitSize` and `SurfaceSnap`
-type remarks (both name `SceneBuilder.Core.Model.SpatialComponents.*Fields`), and the `ResetBaseline`
-summaries on both (NaN sentinel, `PlanExecutor`). Fix them in the C# source, not here.
+`verify-docs.mjs` catches known shapes of internal note, not prose that is merely bad. Before
+deploying, read what actually changed:
 
-`FitSize` and `SurfaceSnap` also publish `Evaluate`, `ResetBaseline`, `mode`, `value`, and `size`
-because Unity serialization needs them public. If they are not meant to be user-facing API, the
-generator needs an exclusion rule.
+```bash
+git diff src/content/api.json | grep '^[+-].*"text"' | head -40
+```
+
+`FitSize` and `SurfaceSnap` publish `mode`, `value`, `size`, `captureThreshold` and `Evaluate`.
+Those are user-facing: the fields appear in the inspector and the components are added from a
+builder. Only `ResetBaseline` on each is hidden.

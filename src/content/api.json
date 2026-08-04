@@ -657,15 +657,37 @@
       "remarks": [
         {
           "kind": "text",
-          "text": "Serialized field names are the real write contract — they MUST equal "
+          "text": "Add it from a builder with "
         },
         {
-          "kind": "code",
-          "text": "SceneBuilder.Core.Model.SpatialComponents.FitSizeFields.*"
+          "kind": "ref",
+          "text": "NodeHandle.FitSize",
+          "type": "node-handle",
+          "member": "fit-size"
         },
         {
           "kind": "text",
-          "text": " so Materialize's by-name write hits the right field."
+          "text": " or in the inspector. It runs in edit mode only. Resize the object by hand and it reads the new world size back into "
+        },
+        {
+          "kind": "ref",
+          "text": "value",
+          "type": "fit-size",
+          "member": "value"
+        },
+        {
+          "kind": "text",
+          "text": " / "
+        },
+        {
+          "kind": "ref",
+          "text": "size",
+          "type": "fit-size",
+          "member": "size"
+        },
+        {
+          "kind": "text",
+          "text": ", so the size you drag to is the size your builder file ends up saying."
         }
       ],
       "typeParams": [],
@@ -785,176 +807,6 @@
           ]
         },
         {
-          "id": "reset-baseline",
-          "name": "ResetBaseline",
-          "kind": "method",
-          "isStatic": false,
-          "summary": [
-            {
-              "kind": "text",
-              "text": "Forgets the last-self-write baseline (NaN sentinel) so the NEXT "
-            },
-            {
-              "kind": "ref",
-              "text": "Evaluate",
-              "type": "fit-size",
-              "member": "evaluate"
-            },
-            {
-              "kind": "text",
-              "text": " re-derives "
-            },
-            {
-              "kind": "code",
-              "text": "localScale"
-            },
-            {
-              "kind": "text",
-              "text": " from the intent instead of mistaking a fresh write for a manual rescale. Called on enable, and by "
-            },
-            {
-              "kind": "code",
-              "text": "PlanExecutor"
-            },
-            {
-              "kind": "text",
-              "text": " (code->scene) right after it writes "
-            },
-            {
-              "kind": "code",
-              "text": "m_LocalScale"
-            },
-            {
-              "kind": "text",
-              "text": " directly on this object's "
-            },
-            {
-              "kind": "link",
-              "text": "Transform",
-              "href": "https://docs.unity3d.com/ScriptReference/Transform.html"
-            },
-            {
-              "kind": "text",
-              "text": " (materialize always writes the full authored transform per spec 23 — that write is the plugin's own, not a user drag, so it must not be back-solved into source as a wrong "
-            },
-            {
-              "kind": "ref",
-              "text": "value",
-              "type": "fit-size",
-              "member": "value"
-            },
-            {
-              "kind": "text",
-              "text": "/"
-            },
-            {
-              "kind": "ref",
-              "text": "size",
-              "type": "fit-size",
-              "member": "size"
-            },
-            {
-              "kind": "text",
-              "text": "; mirrors "
-            },
-            {
-              "kind": "code",
-              "text": "SurfaceSnap.ResetBaseline"
-            },
-            {
-              "kind": "text",
-              "text": " for the m_LocalPosition case)."
-            }
-          ],
-          "overloads": [
-            {
-              "signature": "public void ResetBaseline()",
-              "returnType": "void",
-              "parameters": [],
-              "typeParams": [],
-              "summary": [
-                {
-                  "kind": "text",
-                  "text": "Forgets the last-self-write baseline (NaN sentinel) so the NEXT "
-                },
-                {
-                  "kind": "ref",
-                  "text": "Evaluate",
-                  "type": "fit-size",
-                  "member": "evaluate"
-                },
-                {
-                  "kind": "text",
-                  "text": " re-derives "
-                },
-                {
-                  "kind": "code",
-                  "text": "localScale"
-                },
-                {
-                  "kind": "text",
-                  "text": " from the intent instead of mistaking a fresh write for a manual rescale. Called on enable, and by "
-                },
-                {
-                  "kind": "code",
-                  "text": "PlanExecutor"
-                },
-                {
-                  "kind": "text",
-                  "text": " (code->scene) right after it writes "
-                },
-                {
-                  "kind": "code",
-                  "text": "m_LocalScale"
-                },
-                {
-                  "kind": "text",
-                  "text": " directly on this object's "
-                },
-                {
-                  "kind": "link",
-                  "text": "Transform",
-                  "href": "https://docs.unity3d.com/ScriptReference/Transform.html"
-                },
-                {
-                  "kind": "text",
-                  "text": " (materialize always writes the full authored transform per spec 23 — that write is the plugin's own, not a user drag, so it must not be back-solved into source as a wrong "
-                },
-                {
-                  "kind": "ref",
-                  "text": "value",
-                  "type": "fit-size",
-                  "member": "value"
-                },
-                {
-                  "kind": "text",
-                  "text": "/"
-                },
-                {
-                  "kind": "ref",
-                  "text": "size",
-                  "type": "fit-size",
-                  "member": "size"
-                },
-                {
-                  "kind": "text",
-                  "text": "; mirrors "
-                },
-                {
-                  "kind": "code",
-                  "text": "SurfaceSnap.ResetBaseline"
-                },
-                {
-                  "kind": "text",
-                  "text": " for the m_LocalPosition case)."
-                }
-              ],
-              "remarks": [],
-              "returns": []
-            }
-          ]
-        },
-        {
           "id": "evaluate",
           "name": "Evaluate",
           "kind": "method",
@@ -1026,24 +878,15 @@
           "summary": [
             {
               "kind": "text",
-              "text": "The mode-enum discriminator for which dimension(s) drive "
+              "text": "Which dimension drives the size. "
             },
             {
               "kind": "code",
-              "text": "localScale"
+              "text": "None"
             },
             {
               "kind": "text",
-              "text": ". None MUST be index 0 (default == inert; "
-            },
-            {
-              "kind": "link",
-              "text": "Evaluate",
-              "href": "https://docs.unity3d.com/ScriptReference/Evaluate.html"
-            },
-            {
-              "kind": "text",
-              "text": " early-returns and a freshly-added FitSize drives nothing)."
+              "text": " is the default and drives nothing, so a freshly added FitSize leaves the object alone until you pick a mode."
             }
           ],
           "remarks": [],
@@ -1182,7 +1025,7 @@
         },
         {
           "kind": "text",
-          "text": "A prefab instance is handled as one whole unit for its hierarchy (M6): child GameObjects are not authored under an instance. Root-level property overrides and added/removed components are authored via "
+          "text": "A prefab instance is authored as one whole unit: you do not author child GameObjects inside its hierarchy. Change what the instance carries with "
         },
         {
           "kind": "ref",
@@ -1212,7 +1055,17 @@
         },
         {
           "kind": "text",
-          "text": " (M10)."
+          "text": ", and reach a nested target with "
+        },
+        {
+          "kind": "ref",
+          "text": "On",
+          "type": "instance-handle",
+          "member": "on"
+        },
+        {
+          "kind": "text",
+          "text": "."
         }
       ],
       "typeParams": [],
@@ -2466,16 +2319,7 @@
           "summary": [
             {
               "kind": "text",
-              "text": "The cleared/no-target sentinel for a "
-            },
-            {
-              "kind": "ref",
-              "text": "NodeHandle",
-              "type": "node-handle"
-            },
-            {
-              "kind": "text",
-              "text": " reference field."
+              "text": "Assign this to a reference field to clear it, leaving the slot empty in the scene."
             }
           ],
           "overloads": [
@@ -2487,16 +2331,7 @@
               "summary": [
                 {
                   "kind": "text",
-                  "text": "The cleared/no-target sentinel for a "
-                },
-                {
-                  "kind": "ref",
-                  "text": "NodeHandle",
-                  "type": "node-handle"
-                },
-                {
-                  "kind": "text",
-                  "text": " reference field."
+                  "text": "Assign this to a reference field to clear it, leaving the slot empty in the scene."
                 }
               ],
               "remarks": [],
@@ -4133,15 +3968,27 @@
       "remarks": [
         {
           "kind": "text",
-          "text": "Serialized field names are the real write contract — they MUST equal "
+          "text": "Add it from a builder with "
         },
         {
-          "kind": "code",
-          "text": "SceneBuilder.Core.Model.SpatialComponents.SurfaceSnapFields.*"
+          "kind": "ref",
+          "text": "NodeHandle.SurfaceSnap",
+          "type": "node-handle",
+          "member": "surface-snap"
         },
         {
           "kind": "text",
-          "text": " so Materialize's by-name write hits the right field."
+          "text": " or in the inspector. It runs in edit mode only, and re-snaps when the surface underneath moves. Drag the object further than "
+        },
+        {
+          "kind": "ref",
+          "text": "captureThreshold",
+          "type": "surface-snap",
+          "member": "capture-threshold"
+        },
+        {
+          "kind": "text",
+          "text": " to detach it deliberately. Axes you leave unset are never touched, so an object can snap down to the floor while staying free to move horizontally."
         }
       ],
       "typeParams": [],
@@ -4259,124 +4106,6 @@
                 {
                   "kind": "text",
                   "text": ") until re-enabled."
-                }
-              ],
-              "remarks": [],
-              "returns": []
-            }
-          ]
-        },
-        {
-          "id": "reset-baseline",
-          "name": "ResetBaseline",
-          "kind": "method",
-          "isStatic": false,
-          "summary": [
-            {
-              "kind": "text",
-              "text": "Forgets the last-self-write baseline (NaN sentinel) and forces a fresh snap on the next "
-            },
-            {
-              "kind": "ref",
-              "text": "Evaluate",
-              "type": "surface-snap",
-              "member": "evaluate"
-            },
-            {
-              "kind": "text",
-              "text": ". Called on enable, and by "
-            },
-            {
-              "kind": "code",
-              "text": "PlanExecutor"
-            },
-            {
-              "kind": "text",
-              "text": " (code->scene) right after it writes "
-            },
-            {
-              "kind": "code",
-              "text": "m_LocalPosition"
-            },
-            {
-              "kind": "text",
-              "text": " directly on this object's "
-            },
-            {
-              "kind": "link",
-              "text": "Transform",
-              "href": "https://docs.unity3d.com/ScriptReference/Transform.html"
-            },
-            {
-              "kind": "text",
-              "text": " (materialize always writes the full authored transform per spec 23, including a frozen driven-channel placeholder — that write is the plugin's own, not a user drag, so it must not count toward "
-            },
-            {
-              "kind": "ref",
-              "text": "captureThreshold",
-              "type": "surface-snap",
-              "member": "capture-threshold"
-            },
-            {
-              "kind": "text",
-              "text": "; the very next Evaluate() re-derives from this fresh baseline instead of sticky-detaching off a stale in-memory baseline)."
-            }
-          ],
-          "overloads": [
-            {
-              "signature": "public void ResetBaseline()",
-              "returnType": "void",
-              "parameters": [],
-              "typeParams": [],
-              "summary": [
-                {
-                  "kind": "text",
-                  "text": "Forgets the last-self-write baseline (NaN sentinel) and forces a fresh snap on the next "
-                },
-                {
-                  "kind": "ref",
-                  "text": "Evaluate",
-                  "type": "surface-snap",
-                  "member": "evaluate"
-                },
-                {
-                  "kind": "text",
-                  "text": ". Called on enable, and by "
-                },
-                {
-                  "kind": "code",
-                  "text": "PlanExecutor"
-                },
-                {
-                  "kind": "text",
-                  "text": " (code->scene) right after it writes "
-                },
-                {
-                  "kind": "code",
-                  "text": "m_LocalPosition"
-                },
-                {
-                  "kind": "text",
-                  "text": " directly on this object's "
-                },
-                {
-                  "kind": "link",
-                  "text": "Transform",
-                  "href": "https://docs.unity3d.com/ScriptReference/Transform.html"
-                },
-                {
-                  "kind": "text",
-                  "text": " (materialize always writes the full authored transform per spec 23, including a frozen driven-channel placeholder — that write is the plugin's own, not a user drag, so it must not count toward "
-                },
-                {
-                  "kind": "ref",
-                  "text": "captureThreshold",
-                  "type": "surface-snap",
-                  "member": "capture-threshold"
-                },
-                {
-                  "kind": "text",
-                  "text": "; the very next Evaluate() re-derives from this fresh baseline instead of sticky-detaching off a stale in-memory baseline)."
                 }
               ],
               "remarks": [],

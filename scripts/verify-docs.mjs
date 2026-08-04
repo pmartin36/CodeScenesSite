@@ -14,6 +14,48 @@ const check = (ok, label) => {
   console.log(`${ok ? "  ok  " : "FAIL  "}${label}`);
 };
 
+// --- no internal notes in published copy ---
+// The /// blocks on com.codescenes/Runtime are read by users on the website. Notes written for
+// maintainers belong in // comments on the same declaration, where they stay out of api.json.
+const INTERNAL = [
+  /\bM\d+\)/, // milestone tags
+  /\bspecs?\/|\bspec \d/,
+  /\bb\d-t\d\b/, // pipeline task ids
+  /SceneBuilder\.(Core|Editor|Grammar)\./,
+  /PlanExecutor|Materialize's|asmdef/,
+  /\bm_Local/,
+  /\bMUST\b/,
+];
+
+{
+  const strings = [];
+  const walk = (t) => {
+    const push = (where, nodes) =>
+      nodes.length &&
+      strings.push([where, nodes.map((n) => (n.kind === "para" ? " " : n.text)).join("")]);
+    push(t.displayName, t.summary);
+    push(t.displayName, t.remarks);
+    for (const v of t.enumValues) push(`${t.displayName}.${v.name}`, v.summary);
+    for (const m of t.members) {
+      for (const o of m.overloads) {
+        push(`${t.displayName}.${m.name}`, o.summary);
+        push(`${t.displayName}.${m.name}`, o.remarks);
+        for (const p of o.parameters) push(`${t.displayName}.${m.name}(${p.name})`, p.summary);
+      }
+    }
+    t.nestedTypes.forEach(walk);
+  };
+  api.types.forEach(walk);
+
+  const leaked = strings.flatMap(([where, text]) =>
+    INTERNAL.filter((re) => re.test(text)).map((re) => `${where} matches ${re}`)
+  );
+  check(
+    leaked.length === 0,
+    `no internal notes in ${strings.length} published doc strings${leaked.length ? `:\n        ${leaked.join("\n        ")}` : ""}`
+  );
+}
+
 // Wide content (signatures, message formats) must scroll inside its own box, never the page.
 const noSidewaysScroll = (p) =>
   p.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth);
