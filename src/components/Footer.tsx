@@ -7,15 +7,16 @@ const COLS: { title: string; links: { label: string; href: string; ext?: boolean
   {
     title: "Product",
     links: [
-      { label: "Features", href: "#features" },
-      { label: "How it works", href: "#how" },
+      { label: "Features", href: "/#features" },
+      { label: "How it works", href: "/#how" },
+      { label: "API reference", href: "/docs/" },
     ],
   },
   {
     title: "About",
     links: [
-      { label: "Help", href: "#help" },
-      { label: "Sources", href: "#sources" },
+      { label: "Help", href: "/#help" },
+      { label: "Sources", href: "/#sources" },
       { label: "Privacy", href: "/privacy/" },
     ],
   },

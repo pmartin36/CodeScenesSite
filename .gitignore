@@ -46,5 +46,13 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# local dev/screenshot scripts (session-specific paths)
-/scripts/
+# local dev/screenshot scripts (session-specific paths). The two the build and the docs
+# check depend on are tracked; listing the directory's contents rather than the directory
+# itself is what lets these negations apply.
+/scripts/*
+!/scripts/gen-api-mirror.mjs
+!/scripts/verify-docs.mjs
+
+# generated from src/content/api.json by scripts/gen-api-mirror.mjs on every prebuild
+/public/llms.txt
+/public/docs/

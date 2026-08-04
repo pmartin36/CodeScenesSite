@@ -4,9 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "npm run docs:mirror",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "docs:mirror": "node scripts/gen-api-mirror.mjs",
+    "api:sync": "dotnet run --project ${CODESCENES_UNITY:-../CodeScenesUnity}/SceneBuilder.DocGen -- --out src/content/api.json && npm run docs:mirror"
   },
   "dependencies": {
     "@shikijs/transformers": "^4.3.1",

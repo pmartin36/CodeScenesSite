@@ -1,0 +1,4592 @@
+{
+  "assembly": "SceneBuilder.Authoring",
+  "namespace": "SceneBuilder.Authoring",
+  "types": [
+    {
+      "id": "asset-reference",
+      "name": "AssetReference",
+      "displayName": "AssetReference",
+      "kind": "class",
+      "signature": "public sealed class AssetReference",
+      "sourcePath": "com.codescenes/Runtime/AssetReference.cs",
+      "summary": [
+        {
+          "kind": "text",
+          "text": "The value produced by the "
+        },
+        {
+          "kind": "ref",
+          "text": "AssetRefs.Asset",
+          "type": "asset-refs",
+          "member": "asset"
+        },
+        {
+          "kind": "text",
+          "text": ", "
+        },
+        {
+          "kind": "ref",
+          "text": "AssetRefs.Asset",
+          "type": "asset-refs",
+          "member": "asset"
+        },
+        {
+          "kind": "text",
+          "text": ", "
+        },
+        {
+          "kind": "ref",
+          "text": "AssetRefs.Builtin",
+          "type": "asset-refs",
+          "member": "builtin"
+        },
+        {
+          "kind": "text",
+          "text": ", or "
+        },
+        {
+          "kind": "ref",
+          "text": "AssetRefs.Builtin",
+          "type": "asset-refs",
+          "member": "builtin"
+        },
+        {
+          "kind": "text",
+          "text": " authoring factories — an asset reference authored by either a readable project path (e.g. "
+        },
+        {
+          "kind": "code",
+          "text": "Asset(\"Assets/Materials/Red.mat\")"
+        },
+        {
+          "kind": "text",
+          "text": "), a sub-object of an imported project asset (e.g. "
+        },
+        {
+          "kind": "code",
+          "text": "Asset(\"Assets/Models/Barrel.fbx\", \"BarrelMesh\")"
+        },
+        {
+          "kind": "text",
+          "text": "), or the name of a Unity built-in resource (e.g. "
+        },
+        {
+          "kind": "code",
+          "text": "Builtin(\"Cube\")"
+        },
+        {
+          "kind": "text",
+          "text": ")."
+        }
+      ],
+      "remarks": [
+        {
+          "kind": "text",
+          "text": "Compile-time scaffolding only. SceneBuilder parses the builder SOURCE TEXT (it never runs the builder), resolving the authored path/name to the asset's GUID at build time; this object carries no runtime state. A cleared/None reference is authored as "
+        },
+        {
+          "kind": "code",
+          "text": "Asset(null)"
+        },
+        {
+          "kind": "text",
+          "text": "."
+        }
+      ],
+      "typeParams": [],
+      "members": [],
+      "nestedTypes": [],
+      "enumValues": []
+    },
+    {
+      "id": "asset-refs",
+      "name": "AssetRefs",
+      "displayName": "AssetRefs",
+      "kind": "class",
+      "signature": "public static class AssetRefs",
+      "sourcePath": "com.codescenes/Runtime/AssetReference.cs",
+      "summary": [
+        {
+          "kind": "text",
+          "text": "The "
+        },
+        {
+          "kind": "code",
+          "text": "Asset(displayPath[, subAssetName])"
+        },
+        {
+          "kind": "text",
+          "text": " and "
+        },
+        {
+          "kind": "code",
+          "text": "Builtin(name[, typeHint])"
+        },
+        {
+          "kind": "text",
+          "text": " authoring factories. Bring them into scope with "
+        },
+        {
+          "kind": "code",
+          "text": "using static SceneBuilder.Authoring.AssetRefs;"
+        },
+        {
+          "kind": "text",
+          "text": " and reference an asset from any serialized asset field: "
+        },
+        {
+          "kind": "code",
+          "text": "c.Set(\"m_Materials\", new[] { Asset(\"Assets/Materials/Red.mat\") })"
+        },
+        {
+          "kind": "text",
+          "text": ", "
+        },
+        {
+          "kind": "code",
+          "text": "c.Set(\"m_Mesh\", Asset(\"Assets/Models/Barrel.fbx\", \"BarrelMesh\"))"
+        },
+        {
+          "kind": "text",
+          "text": ", or "
+        },
+        {
+          "kind": "code",
+          "text": "c.Set(\"m_Mesh\", Builtin(\"Cube\"))"
+        },
+        {
+          "kind": "text",
+          "text": ". Author a cleared field with "
+        },
+        {
+          "kind": "code",
+          "text": "Asset(null)"
+        },
+        {
+          "kind": "text",
+          "text": "."
+        }
+      ],
+      "remarks": [
+        {
+          "kind": "text",
+          "text": "Compile-time scaffolding only — the parser reads the source text, so these return an inert handle and perform no work at runtime."
+        }
+      ],
+      "typeParams": [],
+      "members": [
+        {
+          "id": "asset",
+          "name": "Asset",
+          "kind": "method",
+          "isStatic": true,
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Reference the project asset at "
+            },
+            {
+              "kind": "paramref",
+              "text": "displayPath"
+            },
+            {
+              "kind": "text",
+              "text": " (resolved to its GUID at build time). Pass "
+            },
+            {
+              "kind": "code",
+              "text": "null"
+            },
+            {
+              "kind": "text",
+              "text": " to author a cleared / None reference."
+            }
+          ],
+          "overloads": [
+            {
+              "signature": "public static AssetReference Asset(string displayPath)",
+              "returnType": "AssetReference",
+              "parameters": [
+                {
+                  "name": "displayPath",
+                  "type": "string",
+                  "summary": []
+                }
+              ],
+              "typeParams": [],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Reference the project asset at "
+                },
+                {
+                  "kind": "paramref",
+                  "text": "displayPath"
+                },
+                {
+                  "kind": "text",
+                  "text": " (resolved to its GUID at build time). Pass "
+                },
+                {
+                  "kind": "code",
+                  "text": "null"
+                },
+                {
+                  "kind": "text",
+                  "text": " to author a cleared / None reference."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            },
+            {
+              "signature": "public static AssetReference Asset(string displayPath, string subAssetName)",
+              "returnType": "AssetReference",
+              "parameters": [
+                {
+                  "name": "displayPath",
+                  "type": "string",
+                  "summary": []
+                },
+                {
+                  "name": "subAssetName",
+                  "type": "string",
+                  "summary": []
+                }
+              ],
+              "typeParams": [],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Reference the sub-object named "
+                },
+                {
+                  "kind": "paramref",
+                  "text": "subAssetName"
+                },
+                {
+                  "kind": "text",
+                  "text": " inside the imported project asset at "
+                },
+                {
+                  "kind": "paramref",
+                  "text": "displayPath"
+                },
+                {
+                  "kind": "text",
+                  "text": " (e.g. a Mesh inside an FBX, a sub-material, a sliced Sprite), resolved to the sub-object's GUID + local file identifier at build time."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            }
+          ]
+        },
+        {
+          "id": "builtin",
+          "name": "Builtin",
+          "kind": "method",
+          "isStatic": true,
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Reference the Unity built-in resource named "
+            },
+            {
+              "kind": "paramref",
+              "text": "name"
+            },
+            {
+              "kind": "text",
+              "text": " (resolved from the editor's built-in resource containers at build time)."
+            }
+          ],
+          "overloads": [
+            {
+              "signature": "public static AssetReference Builtin(string name)",
+              "returnType": "AssetReference",
+              "parameters": [
+                {
+                  "name": "name",
+                  "type": "string",
+                  "summary": []
+                }
+              ],
+              "typeParams": [],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Reference the Unity built-in resource named "
+                },
+                {
+                  "kind": "paramref",
+                  "text": "name"
+                },
+                {
+                  "kind": "text",
+                  "text": " (resolved from the editor's built-in resource containers at build time)."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            },
+            {
+              "signature": "public static AssetReference Builtin(string name, string typeHint)",
+              "returnType": "AssetReference",
+              "parameters": [
+                {
+                  "name": "name",
+                  "type": "string",
+                  "summary": []
+                },
+                {
+                  "name": "typeHint",
+                  "type": "string",
+                  "summary": []
+                }
+              ],
+              "typeParams": [],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Reference the Unity built-in resource named "
+                },
+                {
+                  "kind": "paramref",
+                  "text": "name"
+                },
+                {
+                  "kind": "text",
+                  "text": ", qualified by "
+                },
+                {
+                  "kind": "paramref",
+                  "text": "typeHint"
+                },
+                {
+                  "kind": "text",
+                  "text": " (the concrete type name, e.g. "
+                },
+                {
+                  "kind": "code",
+                  "text": "\"Sprite\""
+                },
+                {
+                  "kind": "text",
+                  "text": ") to disambiguate names shared by more than one built-in object."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            }
+          ]
+        }
+      ],
+      "nestedTypes": [],
+      "enumValues": []
+    },
+    {
+      "id": "component-handle-1",
+      "name": "ComponentHandle",
+      "displayName": "ComponentHandle<T>",
+      "kind": "class",
+      "signature": "public sealed class ComponentHandle<T>",
+      "sourcePath": "com.codescenes/Runtime/ComponentHandle.cs",
+      "summary": [
+        {
+          "kind": "text",
+          "text": "A handle to a component being authored on a GameObject (via "
+        },
+        {
+          "kind": "ref",
+          "text": "NodeHandle.Component",
+          "type": "node-handle",
+          "member": "component"
+        },
+        {
+          "kind": "text",
+          "text": "). Set serialized fields either by serialized property path ("
+        },
+        {
+          "kind": "code",
+          "text": "c.Set(\"m_Mass\", 5f)"
+        },
+        {
+          "kind": "text",
+          "text": ") or by a typed member selector ("
+        },
+        {
+          "kind": "code",
+          "text": "c.Set(r => r.mass, 5f)"
+        },
+        {
+          "kind": "text",
+          "text": ")."
+        }
+      ],
+      "remarks": [
+        {
+          "kind": "text",
+          "text": "Compile-time scaffolding only — SceneBuilder parses the source text to build the scene, so these methods return handles for chaining but perform no work at runtime."
+        }
+      ],
+      "typeParams": [
+        {
+          "name": "T",
+          "summary": []
+        }
+      ],
+      "members": [
+        {
+          "id": "set",
+          "name": "Set",
+          "kind": "method",
+          "isStatic": false,
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Set a serialized field by its serialized property path (e.g. \"m_Mass\")."
+            }
+          ],
+          "overloads": [
+            {
+              "signature": "public ComponentHandle<T> Set(string serializedPath, object value)",
+              "returnType": "ComponentHandle<T>",
+              "parameters": [
+                {
+                  "name": "serializedPath",
+                  "type": "string",
+                  "summary": []
+                },
+                {
+                  "name": "value",
+                  "type": "object",
+                  "summary": []
+                }
+              ],
+              "typeParams": [],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Set a serialized field by its serialized property path (e.g. \"m_Mass\")."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            },
+            {
+              "signature": "public ComponentHandle<T> Set<TValue>(Func<T, TValue> selector, TValue value)",
+              "returnType": "ComponentHandle<T>",
+              "parameters": [
+                {
+                  "name": "selector",
+                  "type": "Func<T, TValue>",
+                  "summary": []
+                },
+                {
+                  "name": "value",
+                  "type": "TValue",
+                  "summary": []
+                }
+              ],
+              "typeParams": [
+                {
+                  "name": "TValue",
+                  "summary": []
+                }
+              ],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Set a field by typed member selector (e.g. "
+                },
+                {
+                  "kind": "code",
+                  "text": "r => r.mass"
+                },
+                {
+                  "kind": "text",
+                  "text": ")."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            },
+            {
+              "signature": "public ComponentHandle<T> Set<TValue>(Func<T, TValue> selector, AssetReference asset)",
+              "returnType": "ComponentHandle<T>",
+              "parameters": [
+                {
+                  "name": "selector",
+                  "type": "Func<T, TValue>",
+                  "summary": []
+                },
+                {
+                  "name": "asset",
+                  "type": "AssetReference",
+                  "summary": []
+                }
+              ],
+              "typeParams": [
+                {
+                  "name": "TValue",
+                  "summary": []
+                }
+              ],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Set an asset-reference field by typed member selector, e.g. "
+                },
+                {
+                  "kind": "code",
+                  "text": "c.Set(r => r.sharedMaterial, Asset(\"Assets/Materials/Red.mat\"))"
+                },
+                {
+                  "kind": "text",
+                  "text": ". The selector's return type is the asset type; the value is the "
+                },
+                {
+                  "kind": "ref",
+                  "text": "AssetReference",
+                  "type": "asset-reference"
+                },
+                {
+                  "kind": "text",
+                  "text": " factory result."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            },
+            {
+              "signature": "public ComponentHandle<T> Set<TValue>(Func<T, TValue> selector, NodeHandle target)",
+              "returnType": "ComponentHandle<T>",
+              "parameters": [
+                {
+                  "name": "selector",
+                  "type": "Func<T, TValue>",
+                  "summary": []
+                },
+                {
+                  "name": "target",
+                  "type": "NodeHandle",
+                  "summary": []
+                }
+              ],
+              "typeParams": [
+                {
+                  "name": "TValue",
+                  "summary": []
+                }
+              ],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Set a cross-object-reference field by typed member selector, e.g. "
+                },
+                {
+                  "kind": "code",
+                  "text": "c.Set(r => r.target, door)"
+                },
+                {
+                  "kind": "text",
+                  "text": ". Pass "
+                },
+                {
+                  "kind": "ref",
+                  "text": "NodeHandle.None",
+                  "type": "node-handle",
+                  "member": "none"
+                },
+                {
+                  "kind": "text",
+                  "text": " to clear the slot."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            }
+          ]
+        }
+      ],
+      "nestedTypes": [],
+      "enumValues": []
+    },
+    {
+      "id": "fit-size",
+      "name": "FitSize",
+      "displayName": "FitSize",
+      "kind": "class",
+      "signature": "public sealed class FitSize : MonoBehaviour",
+      "baseType": "MonoBehaviour",
+      "sourcePath": "com.codescenes/Runtime/FitSize.cs",
+      "summary": [
+        {
+          "kind": "text",
+          "text": "Editor-time (and play-mode-guarded) world-size solver. Drives "
+        },
+        {
+          "kind": "code",
+          "text": "transform.localScale"
+        },
+        {
+          "kind": "text",
+          "text": " from a sibling "
+        },
+        {
+          "kind": "link",
+          "text": "MeshFilter",
+          "href": "https://docs.unity3d.com/ScriptReference/MeshFilter.html"
+        },
+        {
+          "kind": "text",
+          "text": "'s local bounds so an authored width/height/depth (aspect-locked) or explicit per-axis "
+        },
+        {
+          "kind": "ref",
+          "text": "size",
+          "type": "fit-size",
+          "member": "size"
+        },
+        {
+          "kind": "text",
+          "text": " becomes an exact WORLD size, independent of the mesh's native dimensions, rotation, or a scaled parent."
+        }
+      ],
+      "remarks": [
+        {
+          "kind": "text",
+          "text": "Serialized field names are the real write contract — they MUST equal "
+        },
+        {
+          "kind": "code",
+          "text": "SceneBuilder.Core.Model.SpatialComponents.FitSizeFields.*"
+        },
+        {
+          "kind": "text",
+          "text": " so Materialize's by-name write hits the right field."
+        }
+      ],
+      "typeParams": [],
+      "members": [
+        {
+          "id": "mode",
+          "name": "mode",
+          "kind": "field",
+          "isStatic": false,
+          "summary": [],
+          "overloads": [
+            {
+              "signature": "public Mode mode",
+              "returnType": "Mode",
+              "parameters": [],
+              "typeParams": [],
+              "summary": [],
+              "remarks": [],
+              "returns": []
+            }
+          ]
+        },
+        {
+          "id": "value",
+          "name": "value",
+          "kind": "field",
+          "isStatic": false,
+          "summary": [
+            {
+              "kind": "text",
+              "text": "The single authored aspect-locked dimension when "
+            },
+            {
+              "kind": "ref",
+              "text": "mode",
+              "type": "fit-size",
+              "member": "mode"
+            },
+            {
+              "kind": "text",
+              "text": " is Width/Height/Depth. Unused (and unwritten) for Explicit/None."
+            }
+          ],
+          "overloads": [
+            {
+              "signature": "public float value",
+              "returnType": "float",
+              "parameters": [],
+              "typeParams": [],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "The single authored aspect-locked dimension when "
+                },
+                {
+                  "kind": "ref",
+                  "text": "mode",
+                  "type": "fit-size",
+                  "member": "mode"
+                },
+                {
+                  "kind": "text",
+                  "text": " is Width/Height/Depth. Unused (and unwritten) for Explicit/None."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            }
+          ]
+        },
+        {
+          "id": "size",
+          "name": "size",
+          "kind": "field",
+          "isStatic": false,
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Explicit per-axis world size when "
+            },
+            {
+              "kind": "ref",
+              "text": "mode",
+              "type": "fit-size",
+              "member": "mode"
+            },
+            {
+              "kind": "text",
+              "text": " is Explicit."
+            }
+          ],
+          "overloads": [
+            {
+              "signature": "public Vector3 size",
+              "returnType": "Vector3",
+              "parameters": [],
+              "typeParams": [],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Explicit per-axis world size when "
+                },
+                {
+                  "kind": "ref",
+                  "text": "mode",
+                  "type": "fit-size",
+                  "member": "mode"
+                },
+                {
+                  "kind": "text",
+                  "text": " is Explicit."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            }
+          ]
+        },
+        {
+          "id": "reset-baseline",
+          "name": "ResetBaseline",
+          "kind": "method",
+          "isStatic": false,
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Forgets the last-self-write baseline (NaN sentinel) so the NEXT "
+            },
+            {
+              "kind": "ref",
+              "text": "Evaluate",
+              "type": "fit-size",
+              "member": "evaluate"
+            },
+            {
+              "kind": "text",
+              "text": " re-derives "
+            },
+            {
+              "kind": "code",
+              "text": "localScale"
+            },
+            {
+              "kind": "text",
+              "text": " from the intent instead of mistaking a fresh write for a manual rescale. Called on enable, and by "
+            },
+            {
+              "kind": "code",
+              "text": "PlanExecutor"
+            },
+            {
+              "kind": "text",
+              "text": " (code->scene) right after it writes "
+            },
+            {
+              "kind": "code",
+              "text": "m_LocalScale"
+            },
+            {
+              "kind": "text",
+              "text": " directly on this object's "
+            },
+            {
+              "kind": "link",
+              "text": "Transform",
+              "href": "https://docs.unity3d.com/ScriptReference/Transform.html"
+            },
+            {
+              "kind": "text",
+              "text": " (materialize always writes the full authored transform per spec 23 — that write is the plugin's own, not a user drag, so it must not be back-solved into source as a wrong "
+            },
+            {
+              "kind": "ref",
+              "text": "value",
+              "type": "fit-size",
+              "member": "value"
+            },
+            {
+              "kind": "text",
+              "text": "/"
+            },
+            {
+              "kind": "ref",
+              "text": "size",
+              "type": "fit-size",
+              "member": "size"
+            },
+            {
+              "kind": "text",
+              "text": "; mirrors "
+            },
+            {
+              "kind": "code",
+              "text": "SurfaceSnap.ResetBaseline"
+            },
+            {
+              "kind": "text",
+              "text": " for the m_LocalPosition case)."
+            }
+          ],
+          "overloads": [
+            {
+              "signature": "public void ResetBaseline()",
+              "returnType": "void",
+              "parameters": [],
+              "typeParams": [],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Forgets the last-self-write baseline (NaN sentinel) so the NEXT "
+                },
+                {
+                  "kind": "ref",
+                  "text": "Evaluate",
+                  "type": "fit-size",
+                  "member": "evaluate"
+                },
+                {
+                  "kind": "text",
+                  "text": " re-derives "
+                },
+                {
+                  "kind": "code",
+                  "text": "localScale"
+                },
+                {
+                  "kind": "text",
+                  "text": " from the intent instead of mistaking a fresh write for a manual rescale. Called on enable, and by "
+                },
+                {
+                  "kind": "code",
+                  "text": "PlanExecutor"
+                },
+                {
+                  "kind": "text",
+                  "text": " (code->scene) right after it writes "
+                },
+                {
+                  "kind": "code",
+                  "text": "m_LocalScale"
+                },
+                {
+                  "kind": "text",
+                  "text": " directly on this object's "
+                },
+                {
+                  "kind": "link",
+                  "text": "Transform",
+                  "href": "https://docs.unity3d.com/ScriptReference/Transform.html"
+                },
+                {
+                  "kind": "text",
+                  "text": " (materialize always writes the full authored transform per spec 23 — that write is the plugin's own, not a user drag, so it must not be back-solved into source as a wrong "
+                },
+                {
+                  "kind": "ref",
+                  "text": "value",
+                  "type": "fit-size",
+                  "member": "value"
+                },
+                {
+                  "kind": "text",
+                  "text": "/"
+                },
+                {
+                  "kind": "ref",
+                  "text": "size",
+                  "type": "fit-size",
+                  "member": "size"
+                },
+                {
+                  "kind": "text",
+                  "text": "; mirrors "
+                },
+                {
+                  "kind": "code",
+                  "text": "SurfaceSnap.ResetBaseline"
+                },
+                {
+                  "kind": "text",
+                  "text": " for the m_LocalPosition case)."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            }
+          ]
+        },
+        {
+          "id": "evaluate",
+          "name": "Evaluate",
+          "kind": "method",
+          "isStatic": false,
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Recompute "
+            },
+            {
+              "kind": "code",
+              "text": "localScale"
+            },
+            {
+              "kind": "text",
+              "text": " from the current mesh bounds / intent, or (if the user manually changed "
+            },
+            {
+              "kind": "code",
+              "text": "localScale"
+            },
+            {
+              "kind": "text",
+              "text": " since our last write) back-solve the intent field(s) from the new world size instead."
+            }
+          ],
+          "overloads": [
+            {
+              "signature": "public void Evaluate()",
+              "returnType": "void",
+              "parameters": [],
+              "typeParams": [],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Recompute "
+                },
+                {
+                  "kind": "code",
+                  "text": "localScale"
+                },
+                {
+                  "kind": "text",
+                  "text": " from the current mesh bounds / intent, or (if the user manually changed "
+                },
+                {
+                  "kind": "code",
+                  "text": "localScale"
+                },
+                {
+                  "kind": "text",
+                  "text": " since our last write) back-solve the intent field(s) from the new world size instead."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            }
+          ]
+        }
+      ],
+      "nestedTypes": [
+        {
+          "id": "mode",
+          "name": "Mode",
+          "displayName": "Mode",
+          "kind": "enum",
+          "signature": "public enum Mode",
+          "sourcePath": "com.codescenes/Runtime/FitSize.cs",
+          "summary": [
+            {
+              "kind": "text",
+              "text": "The mode-enum discriminator for which dimension(s) drive "
+            },
+            {
+              "kind": "code",
+              "text": "localScale"
+            },
+            {
+              "kind": "text",
+              "text": ". None MUST be index 0 (default == inert; "
+            },
+            {
+              "kind": "link",
+              "text": "Evaluate",
+              "href": "https://docs.unity3d.com/ScriptReference/Evaluate.html"
+            },
+            {
+              "kind": "text",
+              "text": " early-returns and a freshly-added FitSize drives nothing)."
+            }
+          ],
+          "remarks": [],
+          "typeParams": [],
+          "members": [],
+          "nestedTypes": [],
+          "enumValues": [
+            {
+              "name": "None",
+              "summary": []
+            },
+            {
+              "name": "Width",
+              "summary": []
+            },
+            {
+              "name": "Height",
+              "summary": []
+            },
+            {
+              "name": "Depth",
+              "summary": []
+            },
+            {
+              "name": "Explicit",
+              "summary": []
+            }
+          ]
+        }
+      ],
+      "enumValues": []
+    },
+    {
+      "id": "i-scene-definition",
+      "name": "ISceneDefinition",
+      "displayName": "ISceneDefinition",
+      "kind": "interface",
+      "signature": "public interface ISceneDefinition",
+      "sourcePath": "com.codescenes/Runtime/ISceneDefinition.cs",
+      "summary": [
+        {
+          "kind": "text",
+          "text": "A Unity scene defined in code. SceneBuilder "
+        },
+        {
+          "kind": "strong",
+          "text": "parses"
+        },
+        {
+          "kind": "text",
+          "text": " the "
+        },
+        {
+          "kind": "ref",
+          "text": "Build",
+          "type": "i-scene-definition",
+          "member": "build"
+        },
+        {
+          "kind": "text",
+          "text": " method (it does not execute it) and materializes the described scene, then keeps code and scene in sync."
+        }
+      ],
+      "remarks": [],
+      "typeParams": [],
+      "members": [
+        {
+          "id": "build",
+          "name": "Build",
+          "kind": "method",
+          "isStatic": false,
+          "summary": [],
+          "overloads": [
+            {
+              "signature": "void Build(SceneRoot scene)",
+              "returnType": "void",
+              "parameters": [
+                {
+                  "name": "scene",
+                  "type": "SceneRoot",
+                  "summary": []
+                }
+              ],
+              "typeParams": [],
+              "summary": [],
+              "remarks": [],
+              "returns": []
+            }
+          ]
+        }
+      ],
+      "nestedTypes": [],
+      "enumValues": []
+    },
+    {
+      "id": "instance-handle",
+      "name": "InstanceHandle",
+      "displayName": "InstanceHandle",
+      "kind": "class",
+      "signature": "public class InstanceHandle",
+      "sourcePath": "com.codescenes/Runtime/InstanceHandle.cs",
+      "summary": [
+        {
+          "kind": "text",
+          "text": "A handle to a prefab instance in a scene definition, returned by "
+        },
+        {
+          "kind": "ref",
+          "text": "SceneRoot.Instance",
+          "type": "scene-root",
+          "member": "instance"
+        },
+        {
+          "kind": "text",
+          "text": " / "
+        },
+        {
+          "kind": "ref",
+          "text": "NodeHandle.Instance",
+          "type": "node-handle",
+          "member": "instance"
+        },
+        {
+          "kind": "text",
+          "text": ". Chain calls to configure the instance's root transform and nest plain children."
+        }
+      ],
+      "remarks": [
+        {
+          "kind": "text",
+          "text": "Compile-time scaffolding only — SceneBuilder parses the source text to build the scene, so these methods return handles for chaining but perform no work at runtime."
+        },
+        {
+          "kind": "para",
+          "text": ""
+        },
+        {
+          "kind": "text",
+          "text": "A prefab instance is handled as one whole unit for its hierarchy (M6): child GameObjects are not authored under an instance. Root-level property overrides and added/removed components are authored via "
+        },
+        {
+          "kind": "ref",
+          "text": "Override",
+          "type": "instance-handle",
+          "member": "override"
+        },
+        {
+          "kind": "text",
+          "text": ", "
+        },
+        {
+          "kind": "ref",
+          "text": "AddComponent",
+          "type": "instance-handle",
+          "member": "add-component"
+        },
+        {
+          "kind": "text",
+          "text": " and "
+        },
+        {
+          "kind": "ref",
+          "text": "RemoveComponent",
+          "type": "instance-handle",
+          "member": "remove-component"
+        },
+        {
+          "kind": "text",
+          "text": " (M10)."
+        }
+      ],
+      "typeParams": [],
+      "members": [
+        {
+          "id": "transform",
+          "name": "Transform",
+          "kind": "method",
+          "isStatic": false,
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Set the local transform. Rotation is authored in Euler degrees."
+            }
+          ],
+          "overloads": [
+            {
+              "signature": "public InstanceHandle Transform((float x, float y, float z)? pos = null, (float x, float y, float z)? rot = null, (float x, float y, float z)? scale = null)",
+              "returnType": "InstanceHandle",
+              "parameters": [
+                {
+                  "name": "pos",
+                  "type": "(float x, float y, float z)?",
+                  "default": "null",
+                  "summary": []
+                },
+                {
+                  "name": "rot",
+                  "type": "(float x, float y, float z)?",
+                  "default": "null",
+                  "summary": []
+                },
+                {
+                  "name": "scale",
+                  "type": "(float x, float y, float z)?",
+                  "default": "null",
+                  "summary": []
+                }
+              ],
+              "typeParams": [],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Set the local transform. Rotation is authored in Euler degrees."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            }
+          ]
+        },
+        {
+          "id": "id",
+          "name": "Id",
+          "kind": "method",
+          "isStatic": false,
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Assign an explicit, stable logical id (otherwise one is derived)."
+            }
+          ],
+          "overloads": [
+            {
+              "signature": "public InstanceHandle Id(string id)",
+              "returnType": "InstanceHandle",
+              "parameters": [
+                {
+                  "name": "id",
+                  "type": "string",
+                  "summary": []
+                }
+              ],
+              "typeParams": [],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Assign an explicit, stable logical id (otherwise one is derived)."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            }
+          ]
+        },
+        {
+          "id": "add",
+          "name": "Add",
+          "kind": "method",
+          "isStatic": false,
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Add a plain child GameObject alongside the instance's hierarchy."
+            }
+          ],
+          "overloads": [
+            {
+              "signature": "public NodeHandle Add(string name)",
+              "returnType": "NodeHandle",
+              "parameters": [
+                {
+                  "name": "name",
+                  "type": "string",
+                  "summary": []
+                }
+              ],
+              "typeParams": [],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Add a plain child GameObject alongside the instance's hierarchy."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            },
+            {
+              "signature": "public NodeHandle Add(string name, Action<NodeHandle> configure)",
+              "returnType": "NodeHandle",
+              "parameters": [
+                {
+                  "name": "name",
+                  "type": "string",
+                  "summary": []
+                },
+                {
+                  "name": "configure",
+                  "type": "Action<NodeHandle>",
+                  "summary": []
+                }
+              ],
+              "typeParams": [],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Add a plain child GameObject and configure it in a closure."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            }
+          ]
+        },
+        {
+          "id": "override",
+          "name": "Override",
+          "kind": "method",
+          "isStatic": false,
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Author property overrides on the instance root's own components, e.g. "
+            },
+            {
+              "kind": "code",
+              "text": ".Override(e => e.Set((Health x) => x.health, 50))"
+            },
+            {
+              "kind": "text",
+              "text": ". Targets are the instance root only — nested targets (including inside a nested prefab) are not authored here."
+            }
+          ],
+          "overloads": [
+            {
+              "signature": "public InstanceHandle Override(Action<OverrideHandle> configure)",
+              "returnType": "InstanceHandle",
+              "parameters": [
+                {
+                  "name": "configure",
+                  "type": "Action<OverrideHandle>",
+                  "summary": []
+                }
+              ],
+              "typeParams": [],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Author property overrides on the instance root's own components, e.g. "
+                },
+                {
+                  "kind": "code",
+                  "text": ".Override(e => e.Set((Health x) => x.health, 50))"
+                },
+                {
+                  "kind": "text",
+                  "text": ". Targets are the instance root only — nested targets (including inside a nested prefab) are not authored here."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            }
+          ]
+        },
+        {
+          "id": "add-component",
+          "name": "AddComponent",
+          "kind": "method",
+          "isStatic": false,
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Add a component of type "
+            },
+            {
+              "kind": "typeparamref",
+              "text": "T"
+            },
+            {
+              "kind": "text",
+              "text": " to the instance root with no field overrides."
+            }
+          ],
+          "overloads": [
+            {
+              "signature": "public InstanceHandle AddComponent<T>()",
+              "returnType": "InstanceHandle",
+              "parameters": [],
+              "typeParams": [
+                {
+                  "name": "T",
+                  "summary": []
+                }
+              ],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Add a component of type "
+                },
+                {
+                  "kind": "typeparamref",
+                  "text": "T"
+                },
+                {
+                  "kind": "text",
+                  "text": " to the instance root with no field overrides."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            },
+            {
+              "signature": "public InstanceHandle AddComponent<T>(Action<ComponentHandle<T>> configure)",
+              "returnType": "InstanceHandle",
+              "parameters": [
+                {
+                  "name": "configure",
+                  "type": "Action<ComponentHandle<T>>",
+                  "summary": []
+                }
+              ],
+              "typeParams": [
+                {
+                  "name": "T",
+                  "summary": []
+                }
+              ],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Add a component of type "
+                },
+                {
+                  "kind": "typeparamref",
+                  "text": "T"
+                },
+                {
+                  "kind": "text",
+                  "text": " to the instance root and set its serialized fields in a closure."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            }
+          ]
+        },
+        {
+          "id": "remove-component",
+          "name": "RemoveComponent",
+          "kind": "method",
+          "isStatic": false,
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Remove a component of type "
+            },
+            {
+              "kind": "typeparamref",
+              "text": "T"
+            },
+            {
+              "kind": "text",
+              "text": " from the instance root (must exist on the source prefab)."
+            }
+          ],
+          "overloads": [
+            {
+              "signature": "public InstanceHandle RemoveComponent<T>()",
+              "returnType": "InstanceHandle",
+              "parameters": [],
+              "typeParams": [
+                {
+                  "name": "T",
+                  "summary": []
+                }
+              ],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Remove a component of type "
+                },
+                {
+                  "kind": "typeparamref",
+                  "text": "T"
+                },
+                {
+                  "kind": "text",
+                  "text": " from the instance root (must exist on the source prefab)."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            }
+          ]
+        },
+        {
+          "id": "on",
+          "name": "On",
+          "kind": "method",
+          "isStatic": false,
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Author overrides scoped to a nested target inside the instance's hierarchy, addressed by child path (e.g. "
+            },
+            {
+              "kind": "code",
+              "text": "\"Turret/Barrel\""
+            },
+            {
+              "kind": "text",
+              "text": "). Fallback for the typed selector overload on "
+            },
+            {
+              "kind": "ref",
+              "text": "InstanceHandle<TRef>",
+              "type": "instance-handle-1"
+            },
+            {
+              "kind": "text",
+              "text": " when no generated ref type is available."
+            }
+          ],
+          "overloads": [
+            {
+              "signature": "public InstanceHandle On(string childPath, Action<ScopedHandle> closure)",
+              "returnType": "InstanceHandle",
+              "parameters": [
+                {
+                  "name": "childPath",
+                  "type": "string",
+                  "summary": []
+                },
+                {
+                  "name": "closure",
+                  "type": "Action<ScopedHandle>",
+                  "summary": []
+                }
+              ],
+              "typeParams": [],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Author overrides scoped to a nested target inside the instance's hierarchy, addressed by child path (e.g. "
+                },
+                {
+                  "kind": "code",
+                  "text": "\"Turret/Barrel\""
+                },
+                {
+                  "kind": "text",
+                  "text": "). Fallback for the typed selector overload on "
+                },
+                {
+                  "kind": "ref",
+                  "text": "InstanceHandle<TRef>",
+                  "type": "instance-handle-1"
+                },
+                {
+                  "kind": "text",
+                  "text": " when no generated ref type is available."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            }
+          ]
+        },
+        {
+          "id": "add-child",
+          "name": "AddChild",
+          "kind": "method",
+          "isStatic": false,
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Add a new child GameObject nested under "
+            },
+            {
+              "kind": "paramref",
+              "text": "parentPath"
+            },
+            {
+              "kind": "text",
+              "text": " in the instance's hierarchy ("
+            },
+            {
+              "kind": "code",
+              "text": "\"\""
+            },
+            {
+              "kind": "text",
+              "text": " = the instance root)."
+            }
+          ],
+          "overloads": [
+            {
+              "signature": "public NodeHandle AddChild(string parentPath, string name)",
+              "returnType": "NodeHandle",
+              "parameters": [
+                {
+                  "name": "parentPath",
+                  "type": "string",
+                  "summary": []
+                },
+                {
+                  "name": "name",
+                  "type": "string",
+                  "summary": []
+                }
+              ],
+              "typeParams": [],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Add a new child GameObject nested under "
+                },
+                {
+                  "kind": "paramref",
+                  "text": "parentPath"
+                },
+                {
+                  "kind": "text",
+                  "text": " in the instance's hierarchy ("
+                },
+                {
+                  "kind": "code",
+                  "text": "\"\""
+                },
+                {
+                  "kind": "text",
+                  "text": " = the instance root)."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            },
+            {
+              "signature": "public NodeHandle AddChild(string parentPath, string name, Action<NodeHandle> configure)",
+              "returnType": "NodeHandle",
+              "parameters": [
+                {
+                  "name": "parentPath",
+                  "type": "string",
+                  "summary": []
+                },
+                {
+                  "name": "name",
+                  "type": "string",
+                  "summary": []
+                },
+                {
+                  "name": "configure",
+                  "type": "Action<NodeHandle>",
+                  "summary": []
+                }
+              ],
+              "typeParams": [],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Add a new child GameObject nested under "
+                },
+                {
+                  "kind": "paramref",
+                  "text": "parentPath"
+                },
+                {
+                  "kind": "text",
+                  "text": " and configure it in a closure (the full "
+                },
+                {
+                  "kind": "ref",
+                  "text": "NodeHandle",
+                  "type": "node-handle"
+                },
+                {
+                  "kind": "text",
+                  "text": " authoring surface)."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            }
+          ]
+        },
+        {
+          "id": "remove-child",
+          "name": "RemoveChild",
+          "kind": "method",
+          "isStatic": false,
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Remove an existing child GameObject at "
+            },
+            {
+              "kind": "paramref",
+              "text": "childPath"
+            },
+            {
+              "kind": "text",
+              "text": " from the instance's hierarchy."
+            }
+          ],
+          "overloads": [
+            {
+              "signature": "public InstanceHandle RemoveChild(string childPath)",
+              "returnType": "InstanceHandle",
+              "parameters": [
+                {
+                  "name": "childPath",
+                  "type": "string",
+                  "summary": []
+                }
+              ],
+              "typeParams": [],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Remove an existing child GameObject at "
+                },
+                {
+                  "kind": "paramref",
+                  "text": "childPath"
+                },
+                {
+                  "kind": "text",
+                  "text": " from the instance's hierarchy."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            }
+          ]
+        }
+      ],
+      "nestedTypes": [],
+      "enumValues": []
+    },
+    {
+      "id": "instance-handle-1",
+      "name": "InstanceHandle",
+      "displayName": "InstanceHandle<TRef>",
+      "kind": "class",
+      "signature": "public sealed class InstanceHandle<TRef> : InstanceHandle where TRef : PrefabRef",
+      "baseType": "InstanceHandle",
+      "sourcePath": "com.codescenes/Runtime/InstanceHandle.cs",
+      "summary": [
+        {
+          "kind": "text",
+          "text": "A typed handle to a prefab instance, returned by "
+        },
+        {
+          "kind": "ref",
+          "text": "SceneRoot.Instance",
+          "type": "scene-root",
+          "member": "instance"
+        },
+        {
+          "kind": "text",
+          "text": ". Carries the generated ref type "
+        },
+        {
+          "kind": "typeparamref",
+          "text": "TRef"
+        },
+        {
+          "kind": "text",
+          "text": " through the chain so "
+        },
+        {
+          "kind": "ref",
+          "text": "On",
+          "type": "instance-handle-1",
+          "member": "on"
+        },
+        {
+          "kind": "text",
+          "text": "'s selector can be type-checked against the instance's actual nested hierarchy."
+        }
+      ],
+      "remarks": [
+        {
+          "kind": "text",
+          "text": "Compile-time scaffolding only — SceneBuilder parses the source text to build the scene, so these methods return handles for chaining but perform no work at runtime."
+        }
+      ],
+      "typeParams": [
+        {
+          "name": "TRef",
+          "constraint": "PrefabRef",
+          "summary": []
+        }
+      ],
+      "members": [
+        {
+          "id": "transform",
+          "name": "Transform",
+          "kind": "method",
+          "isStatic": false,
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Set the local transform. Rotation is authored in Euler degrees."
+            }
+          ],
+          "overloads": [
+            {
+              "signature": "public new InstanceHandle<TRef> Transform((float x, float y, float z)? pos = null, (float x, float y, float z)? rot = null, (float x, float y, float z)? scale = null)",
+              "returnType": "InstanceHandle<TRef>",
+              "parameters": [
+                {
+                  "name": "pos",
+                  "type": "(float x, float y, float z)?",
+                  "default": "null",
+                  "summary": []
+                },
+                {
+                  "name": "rot",
+                  "type": "(float x, float y, float z)?",
+                  "default": "null",
+                  "summary": []
+                },
+                {
+                  "name": "scale",
+                  "type": "(float x, float y, float z)?",
+                  "default": "null",
+                  "summary": []
+                }
+              ],
+              "typeParams": [],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Set the local transform. Rotation is authored in Euler degrees."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            }
+          ]
+        },
+        {
+          "id": "id",
+          "name": "Id",
+          "kind": "method",
+          "isStatic": false,
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Assign an explicit, stable logical id (otherwise one is derived)."
+            }
+          ],
+          "overloads": [
+            {
+              "signature": "public new InstanceHandle<TRef> Id(string id)",
+              "returnType": "InstanceHandle<TRef>",
+              "parameters": [
+                {
+                  "name": "id",
+                  "type": "string",
+                  "summary": []
+                }
+              ],
+              "typeParams": [],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Assign an explicit, stable logical id (otherwise one is derived)."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            }
+          ]
+        },
+        {
+          "id": "override",
+          "name": "Override",
+          "kind": "method",
+          "isStatic": false,
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Author property overrides on the instance root's own components, e.g. "
+            },
+            {
+              "kind": "code",
+              "text": ".Override(e => e.Set((Health x) => x.health, 50))"
+            },
+            {
+              "kind": "text",
+              "text": ". Targets are the instance root only — nested targets (including inside a nested prefab) are not authored here."
+            }
+          ],
+          "overloads": [
+            {
+              "signature": "public new InstanceHandle<TRef> Override(Action<OverrideHandle> configure)",
+              "returnType": "InstanceHandle<TRef>",
+              "parameters": [
+                {
+                  "name": "configure",
+                  "type": "Action<OverrideHandle>",
+                  "summary": []
+                }
+              ],
+              "typeParams": [],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Author property overrides on the instance root's own components, e.g. "
+                },
+                {
+                  "kind": "code",
+                  "text": ".Override(e => e.Set((Health x) => x.health, 50))"
+                },
+                {
+                  "kind": "text",
+                  "text": ". Targets are the instance root only — nested targets (including inside a nested prefab) are not authored here."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            }
+          ]
+        },
+        {
+          "id": "add-component",
+          "name": "AddComponent",
+          "kind": "method",
+          "isStatic": false,
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Add a component of type "
+            },
+            {
+              "kind": "typeparamref",
+              "text": "T"
+            },
+            {
+              "kind": "text",
+              "text": " to the instance root with no field overrides."
+            }
+          ],
+          "overloads": [
+            {
+              "signature": "public new InstanceHandle<TRef> AddComponent<T>()",
+              "returnType": "InstanceHandle<TRef>",
+              "parameters": [],
+              "typeParams": [
+                {
+                  "name": "T",
+                  "summary": []
+                }
+              ],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Add a component of type "
+                },
+                {
+                  "kind": "typeparamref",
+                  "text": "T"
+                },
+                {
+                  "kind": "text",
+                  "text": " to the instance root with no field overrides."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            },
+            {
+              "signature": "public new InstanceHandle<TRef> AddComponent<T>(Action<ComponentHandle<T>> configure)",
+              "returnType": "InstanceHandle<TRef>",
+              "parameters": [
+                {
+                  "name": "configure",
+                  "type": "Action<ComponentHandle<T>>",
+                  "summary": []
+                }
+              ],
+              "typeParams": [
+                {
+                  "name": "T",
+                  "summary": []
+                }
+              ],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Add a component of type "
+                },
+                {
+                  "kind": "typeparamref",
+                  "text": "T"
+                },
+                {
+                  "kind": "text",
+                  "text": " to the instance root and set its serialized fields in a closure."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            }
+          ]
+        },
+        {
+          "id": "remove-component",
+          "name": "RemoveComponent",
+          "kind": "method",
+          "isStatic": false,
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Remove a component of type "
+            },
+            {
+              "kind": "typeparamref",
+              "text": "T"
+            },
+            {
+              "kind": "text",
+              "text": " from the instance root (must exist on the source prefab)."
+            }
+          ],
+          "overloads": [
+            {
+              "signature": "public new InstanceHandle<TRef> RemoveComponent<T>()",
+              "returnType": "InstanceHandle<TRef>",
+              "parameters": [],
+              "typeParams": [
+                {
+                  "name": "T",
+                  "summary": []
+                }
+              ],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Remove a component of type "
+                },
+                {
+                  "kind": "typeparamref",
+                  "text": "T"
+                },
+                {
+                  "kind": "text",
+                  "text": " from the instance root (must exist on the source prefab)."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            }
+          ]
+        },
+        {
+          "id": "on",
+          "name": "On",
+          "kind": "method",
+          "isStatic": false,
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Author overrides scoped to a nested target inside the instance's hierarchy, addressed by a compiler-checked member selector (e.g. "
+            },
+            {
+              "kind": "code",
+              "text": "t => t.Turret.Barrel"
+            },
+            {
+              "kind": "text",
+              "text": "). "
+            },
+            {
+              "kind": "typeparamref",
+              "text": "TNode"
+            },
+            {
+              "kind": "text",
+              "text": " is inferred from the selector's leaf property type."
+            }
+          ],
+          "overloads": [
+            {
+              "signature": "public InstanceHandle<TRef> On<TNode>(Func<TRef, TNode> selector, Action<ScopedHandle> closure)",
+              "returnType": "InstanceHandle<TRef>",
+              "parameters": [
+                {
+                  "name": "selector",
+                  "type": "Func<TRef, TNode>",
+                  "summary": []
+                },
+                {
+                  "name": "closure",
+                  "type": "Action<ScopedHandle>",
+                  "summary": []
+                }
+              ],
+              "typeParams": [
+                {
+                  "name": "TNode",
+                  "summary": []
+                }
+              ],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Author overrides scoped to a nested target inside the instance's hierarchy, addressed by a compiler-checked member selector (e.g. "
+                },
+                {
+                  "kind": "code",
+                  "text": "t => t.Turret.Barrel"
+                },
+                {
+                  "kind": "text",
+                  "text": "). "
+                },
+                {
+                  "kind": "typeparamref",
+                  "text": "TNode"
+                },
+                {
+                  "kind": "text",
+                  "text": " is inferred from the selector's leaf property type."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            },
+            {
+              "signature": "public new InstanceHandle<TRef> On(string childPath, Action<ScopedHandle> closure)",
+              "returnType": "InstanceHandle<TRef>",
+              "parameters": [
+                {
+                  "name": "childPath",
+                  "type": "string",
+                  "summary": []
+                },
+                {
+                  "name": "closure",
+                  "type": "Action<ScopedHandle>",
+                  "summary": []
+                }
+              ],
+              "typeParams": [],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "String fallback that keeps "
+                },
+                {
+                  "kind": "typeparamref",
+                  "text": "TRef"
+                },
+                {
+                  "kind": "text",
+                  "text": " for chaining continuity."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            }
+          ]
+        },
+        {
+          "id": "remove-child",
+          "name": "RemoveChild",
+          "kind": "method",
+          "isStatic": false,
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Remove an existing source child GameObject addressed by a compiler-checked member selector (e.g. "
+            },
+            {
+              "kind": "code",
+              "text": "t => t.LeftTurret.Antenna"
+            },
+            {
+              "kind": "text",
+              "text": "). A typo or a stale name is a COMPILE error, and a hierarchy rename auto-syncs the accessor — exactly like "
+            },
+            {
+              "kind": "ref",
+              "text": "On",
+              "type": "instance-handle-1",
+              "member": "on"
+            },
+            {
+              "kind": "text",
+              "text": ". Use the string overload for a child with no generated ref type."
+            }
+          ],
+          "overloads": [
+            {
+              "signature": "public InstanceHandle<TRef> RemoveChild<TNode>(Func<TRef, TNode> selector)",
+              "returnType": "InstanceHandle<TRef>",
+              "parameters": [
+                {
+                  "name": "selector",
+                  "type": "Func<TRef, TNode>",
+                  "summary": []
+                }
+              ],
+              "typeParams": [
+                {
+                  "name": "TNode",
+                  "summary": []
+                }
+              ],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Remove an existing source child GameObject addressed by a compiler-checked member selector (e.g. "
+                },
+                {
+                  "kind": "code",
+                  "text": "t => t.LeftTurret.Antenna"
+                },
+                {
+                  "kind": "text",
+                  "text": "). A typo or a stale name is a COMPILE error, and a hierarchy rename auto-syncs the accessor — exactly like "
+                },
+                {
+                  "kind": "ref",
+                  "text": "On",
+                  "type": "instance-handle-1",
+                  "member": "on"
+                },
+                {
+                  "kind": "text",
+                  "text": ". Use the string overload for a child with no generated ref type."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            },
+            {
+              "signature": "public new InstanceHandle<TRef> RemoveChild(string childPath)",
+              "returnType": "InstanceHandle<TRef>",
+              "parameters": [
+                {
+                  "name": "childPath",
+                  "type": "string",
+                  "summary": []
+                }
+              ],
+              "typeParams": [],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Remove an existing child GameObject at "
+                },
+                {
+                  "kind": "paramref",
+                  "text": "childPath"
+                },
+                {
+                  "kind": "text",
+                  "text": " from the instance's hierarchy."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            }
+          ]
+        },
+        {
+          "id": "add-child",
+          "name": "AddChild",
+          "kind": "method",
+          "isStatic": false,
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Add a new child GameObject nested under a compiler-checked parent selector (e.g. "
+            },
+            {
+              "kind": "code",
+              "text": "t => t.LeftTurret"
+            },
+            {
+              "kind": "text",
+              "text": "). The PARENT is façade-checked (typo/stale = compile error, rename auto-syncs); the new child "
+            },
+            {
+              "kind": "paramref",
+              "text": "name"
+            },
+            {
+              "kind": "text",
+              "text": " stays a string — it is a genuinely new object with no façade type yet."
+            }
+          ],
+          "overloads": [
+            {
+              "signature": "public NodeHandle AddChild<TNode>(Func<TRef, TNode> parentSelector, string name)",
+              "returnType": "NodeHandle",
+              "parameters": [
+                {
+                  "name": "parentSelector",
+                  "type": "Func<TRef, TNode>",
+                  "summary": []
+                },
+                {
+                  "name": "name",
+                  "type": "string",
+                  "summary": []
+                }
+              ],
+              "typeParams": [
+                {
+                  "name": "TNode",
+                  "summary": []
+                }
+              ],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Add a new child GameObject nested under a compiler-checked parent selector (e.g. "
+                },
+                {
+                  "kind": "code",
+                  "text": "t => t.LeftTurret"
+                },
+                {
+                  "kind": "text",
+                  "text": "). The PARENT is façade-checked (typo/stale = compile error, rename auto-syncs); the new child "
+                },
+                {
+                  "kind": "paramref",
+                  "text": "name"
+                },
+                {
+                  "kind": "text",
+                  "text": " stays a string — it is a genuinely new object with no façade type yet."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            },
+            {
+              "signature": "public NodeHandle AddChild<TNode>(Func<TRef, TNode> parentSelector, string name, Action<NodeHandle> configure)",
+              "returnType": "NodeHandle",
+              "parameters": [
+                {
+                  "name": "parentSelector",
+                  "type": "Func<TRef, TNode>",
+                  "summary": []
+                },
+                {
+                  "name": "name",
+                  "type": "string",
+                  "summary": []
+                },
+                {
+                  "name": "configure",
+                  "type": "Action<NodeHandle>",
+                  "summary": []
+                }
+              ],
+              "typeParams": [
+                {
+                  "name": "TNode",
+                  "summary": []
+                }
+              ],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Add a new child GameObject under a compiler-checked parent selector and configure it in a closure (the full "
+                },
+                {
+                  "kind": "ref",
+                  "text": "NodeHandle",
+                  "type": "node-handle"
+                },
+                {
+                  "kind": "text",
+                  "text": " authoring surface)."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            }
+          ]
+        }
+      ],
+      "nestedTypes": [],
+      "enumValues": []
+    },
+    {
+      "id": "node-handle",
+      "name": "NodeHandle",
+      "displayName": "NodeHandle",
+      "kind": "class",
+      "signature": "public sealed class NodeHandle",
+      "sourcePath": "com.codescenes/Runtime/NodeHandle.cs",
+      "summary": [
+        {
+          "kind": "text",
+          "text": "A handle to a GameObject in a scene definition. Chain calls to configure it and nest children."
+        }
+      ],
+      "remarks": [
+        {
+          "kind": "text",
+          "text": "Compile-time scaffolding only — SceneBuilder parses the source text to build the scene, so these methods return handles for chaining but perform no work at runtime."
+        }
+      ],
+      "typeParams": [],
+      "members": [
+        {
+          "id": "none",
+          "name": "None",
+          "kind": "field",
+          "isStatic": true,
+          "summary": [
+            {
+              "kind": "text",
+              "text": "The cleared/no-target sentinel for a "
+            },
+            {
+              "kind": "ref",
+              "text": "NodeHandle",
+              "type": "node-handle"
+            },
+            {
+              "kind": "text",
+              "text": " reference field."
+            }
+          ],
+          "overloads": [
+            {
+              "signature": "public static readonly NodeHandle None",
+              "returnType": "NodeHandle",
+              "parameters": [],
+              "typeParams": [],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "The cleared/no-target sentinel for a "
+                },
+                {
+                  "kind": "ref",
+                  "text": "NodeHandle",
+                  "type": "node-handle"
+                },
+                {
+                  "kind": "text",
+                  "text": " reference field."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            }
+          ]
+        },
+        {
+          "id": "add",
+          "name": "Add",
+          "kind": "method",
+          "isStatic": false,
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Add a child GameObject."
+            }
+          ],
+          "overloads": [
+            {
+              "signature": "public NodeHandle Add(string name)",
+              "returnType": "NodeHandle",
+              "parameters": [
+                {
+                  "name": "name",
+                  "type": "string",
+                  "summary": []
+                }
+              ],
+              "typeParams": [],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Add a child GameObject."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            },
+            {
+              "signature": "public NodeHandle Add(string name, Action<NodeHandle> configure)",
+              "returnType": "NodeHandle",
+              "parameters": [
+                {
+                  "name": "name",
+                  "type": "string",
+                  "summary": []
+                },
+                {
+                  "name": "configure",
+                  "type": "Action<NodeHandle>",
+                  "summary": []
+                }
+              ],
+              "typeParams": [],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Add a child GameObject and configure it in a closure."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            }
+          ]
+        },
+        {
+          "id": "transform",
+          "name": "Transform",
+          "kind": "method",
+          "isStatic": false,
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Set the local transform. Rotation is authored in Euler degrees."
+            }
+          ],
+          "overloads": [
+            {
+              "signature": "public NodeHandle Transform((float x, float y, float z)? pos = null, (float x, float y, float z)? rot = null, (float x, float y, float z)? scale = null)",
+              "returnType": "NodeHandle",
+              "parameters": [
+                {
+                  "name": "pos",
+                  "type": "(float x, float y, float z)?",
+                  "default": "null",
+                  "summary": []
+                },
+                {
+                  "name": "rot",
+                  "type": "(float x, float y, float z)?",
+                  "default": "null",
+                  "summary": []
+                },
+                {
+                  "name": "scale",
+                  "type": "(float x, float y, float z)?",
+                  "default": "null",
+                  "summary": []
+                }
+              ],
+              "typeParams": [],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Set the local transform. Rotation is authored in Euler degrees."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            }
+          ]
+        },
+        {
+          "id": "rect-transform",
+          "name": "RectTransform",
+          "kind": "method",
+          "isStatic": false,
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Set the UI layout (RectTransform). Presence of this call marks the node as a RectTransform node; omitted arguments stay at Unity's RectTransform defaults."
+            }
+          ],
+          "overloads": [
+            {
+              "signature": "public NodeHandle RectTransform((float x, float y)? anchoredPos = null, (float x, float y)? sizeDelta = null, (float x, float y)? anchorMin = null, (float x, float y)? anchorMax = null, (float x, float y)? pivot = null)",
+              "returnType": "NodeHandle",
+              "parameters": [
+                {
+                  "name": "anchoredPos",
+                  "type": "(float x, float y)?",
+                  "default": "null",
+                  "summary": []
+                },
+                {
+                  "name": "sizeDelta",
+                  "type": "(float x, float y)?",
+                  "default": "null",
+                  "summary": []
+                },
+                {
+                  "name": "anchorMin",
+                  "type": "(float x, float y)?",
+                  "default": "null",
+                  "summary": []
+                },
+                {
+                  "name": "anchorMax",
+                  "type": "(float x, float y)?",
+                  "default": "null",
+                  "summary": []
+                },
+                {
+                  "name": "pivot",
+                  "type": "(float x, float y)?",
+                  "default": "null",
+                  "summary": []
+                }
+              ],
+              "typeParams": [],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Set the UI layout (RectTransform). Presence of this call marks the node as a RectTransform node; omitted arguments stay at Unity's RectTransform defaults."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            }
+          ]
+        },
+        {
+          "id": "fit-size",
+          "name": "FitSize",
+          "kind": "method",
+          "isStatic": false,
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Aspect-locked world size: exactly one of "
+            },
+            {
+              "kind": "paramref",
+              "text": "width"
+            },
+            {
+              "kind": "text",
+              "text": "/"
+            },
+            {
+              "kind": "paramref",
+              "text": "height"
+            },
+            {
+              "kind": "text",
+              "text": "/ "
+            },
+            {
+              "kind": "paramref",
+              "text": "depth"
+            },
+            {
+              "kind": "text",
+              "text": " drives the size, aspect preserved on the other two axes."
+            }
+          ],
+          "overloads": [
+            {
+              "signature": "public NodeHandle FitSize(float? width = null, float? height = null, float? depth = null)",
+              "returnType": "NodeHandle",
+              "parameters": [
+                {
+                  "name": "width",
+                  "type": "float?",
+                  "default": "null",
+                  "summary": []
+                },
+                {
+                  "name": "height",
+                  "type": "float?",
+                  "default": "null",
+                  "summary": []
+                },
+                {
+                  "name": "depth",
+                  "type": "float?",
+                  "default": "null",
+                  "summary": []
+                }
+              ],
+              "typeParams": [],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Aspect-locked world size: exactly one of "
+                },
+                {
+                  "kind": "paramref",
+                  "text": "width"
+                },
+                {
+                  "kind": "text",
+                  "text": "/"
+                },
+                {
+                  "kind": "paramref",
+                  "text": "height"
+                },
+                {
+                  "kind": "text",
+                  "text": "/ "
+                },
+                {
+                  "kind": "paramref",
+                  "text": "depth"
+                },
+                {
+                  "kind": "text",
+                  "text": " drives the size, aspect preserved on the other two axes."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            },
+            {
+              "signature": "public NodeHandle FitSize((float x, float y, float z) size)",
+              "returnType": "NodeHandle",
+              "parameters": [
+                {
+                  "name": "size",
+                  "type": "(float x, float y, float z)",
+                  "summary": []
+                }
+              ],
+              "typeParams": [],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Explicit per-axis world size (non-uniform allowed)."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            }
+          ]
+        },
+        {
+          "id": "surface-snap",
+          "name": "SurfaceSnap",
+          "kind": "method",
+          "isStatic": false,
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Snap to a surface: at most one horizontal ("
+            },
+            {
+              "kind": "paramref",
+              "text": "left"
+            },
+            {
+              "kind": "text",
+              "text": "/"
+            },
+            {
+              "kind": "paramref",
+              "text": "right"
+            },
+            {
+              "kind": "text",
+              "text": "), one vertical ("
+            },
+            {
+              "kind": "paramref",
+              "text": "up"
+            },
+            {
+              "kind": "text",
+              "text": "/"
+            },
+            {
+              "kind": "paramref",
+              "text": "down"
+            },
+            {
+              "kind": "text",
+              "text": "), and one depth ("
+            },
+            {
+              "kind": "paramref",
+              "text": "forward"
+            },
+            {
+              "kind": "text",
+              "text": "/"
+            },
+            {
+              "kind": "paramref",
+              "text": "back"
+            },
+            {
+              "kind": "text",
+              "text": ") axis, with an optional explicit "
+            },
+            {
+              "kind": "paramref",
+              "text": "target"
+            },
+            {
+              "kind": "text",
+              "text": " override (skips the raycast/fallback scan)."
+            }
+          ],
+          "overloads": [
+            {
+              "signature": "public NodeHandle SurfaceSnap(bool up = false, bool down = false, bool left = false, bool right = false, bool forward = false, bool back = false, NodeHandle target = null)",
+              "returnType": "NodeHandle",
+              "parameters": [
+                {
+                  "name": "up",
+                  "type": "bool",
+                  "default": "false",
+                  "summary": []
+                },
+                {
+                  "name": "down",
+                  "type": "bool",
+                  "default": "false",
+                  "summary": []
+                },
+                {
+                  "name": "left",
+                  "type": "bool",
+                  "default": "false",
+                  "summary": []
+                },
+                {
+                  "name": "right",
+                  "type": "bool",
+                  "default": "false",
+                  "summary": []
+                },
+                {
+                  "name": "forward",
+                  "type": "bool",
+                  "default": "false",
+                  "summary": []
+                },
+                {
+                  "name": "back",
+                  "type": "bool",
+                  "default": "false",
+                  "summary": []
+                },
+                {
+                  "name": "target",
+                  "type": "NodeHandle",
+                  "default": "null",
+                  "summary": []
+                }
+              ],
+              "typeParams": [],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Snap to a surface: at most one horizontal ("
+                },
+                {
+                  "kind": "paramref",
+                  "text": "left"
+                },
+                {
+                  "kind": "text",
+                  "text": "/"
+                },
+                {
+                  "kind": "paramref",
+                  "text": "right"
+                },
+                {
+                  "kind": "text",
+                  "text": "), one vertical ("
+                },
+                {
+                  "kind": "paramref",
+                  "text": "up"
+                },
+                {
+                  "kind": "text",
+                  "text": "/"
+                },
+                {
+                  "kind": "paramref",
+                  "text": "down"
+                },
+                {
+                  "kind": "text",
+                  "text": "), and one depth ("
+                },
+                {
+                  "kind": "paramref",
+                  "text": "forward"
+                },
+                {
+                  "kind": "text",
+                  "text": "/"
+                },
+                {
+                  "kind": "paramref",
+                  "text": "back"
+                },
+                {
+                  "kind": "text",
+                  "text": ") axis, with an optional explicit "
+                },
+                {
+                  "kind": "paramref",
+                  "text": "target"
+                },
+                {
+                  "kind": "text",
+                  "text": " override (skips the raycast/fallback scan)."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            }
+          ]
+        },
+        {
+          "id": "tag",
+          "name": "Tag",
+          "kind": "method",
+          "isStatic": false,
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Set the GameObject tag."
+            }
+          ],
+          "overloads": [
+            {
+              "signature": "public NodeHandle Tag(string tag)",
+              "returnType": "NodeHandle",
+              "parameters": [
+                {
+                  "name": "tag",
+                  "type": "string",
+                  "summary": []
+                }
+              ],
+              "typeParams": [],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Set the GameObject tag."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            }
+          ]
+        },
+        {
+          "id": "layer",
+          "name": "Layer",
+          "kind": "method",
+          "isStatic": false,
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Set the GameObject layer."
+            }
+          ],
+          "overloads": [
+            {
+              "signature": "public NodeHandle Layer(int layer)",
+              "returnType": "NodeHandle",
+              "parameters": [
+                {
+                  "name": "layer",
+                  "type": "int",
+                  "summary": []
+                }
+              ],
+              "typeParams": [],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Set the GameObject layer."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            }
+          ]
+        },
+        {
+          "id": "active",
+          "name": "Active",
+          "kind": "method",
+          "isStatic": false,
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Set the active state."
+            }
+          ],
+          "overloads": [
+            {
+              "signature": "public NodeHandle Active(bool active)",
+              "returnType": "NodeHandle",
+              "parameters": [
+                {
+                  "name": "active",
+                  "type": "bool",
+                  "summary": []
+                }
+              ],
+              "typeParams": [],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Set the active state."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            }
+          ]
+        },
+        {
+          "id": "static",
+          "name": "Static",
+          "kind": "method",
+          "isStatic": false,
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Mark the GameObject static."
+            }
+          ],
+          "overloads": [
+            {
+              "signature": "public NodeHandle Static(bool value = true)",
+              "returnType": "NodeHandle",
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": "bool",
+                  "default": "true",
+                  "summary": []
+                }
+              ],
+              "typeParams": [],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Mark the GameObject static."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            }
+          ]
+        },
+        {
+          "id": "id",
+          "name": "Id",
+          "kind": "method",
+          "isStatic": false,
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Assign an explicit, stable logical id (otherwise one is derived)."
+            }
+          ],
+          "overloads": [
+            {
+              "signature": "public NodeHandle Id(string id)",
+              "returnType": "NodeHandle",
+              "parameters": [
+                {
+                  "name": "id",
+                  "type": "string",
+                  "summary": []
+                }
+              ],
+              "typeParams": [],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Assign an explicit, stable logical id (otherwise one is derived)."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            }
+          ]
+        },
+        {
+          "id": "instance",
+          "name": "Instance",
+          "kind": "method",
+          "isStatic": false,
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Instantiate a prefab instance nested under this GameObject, from "
+            },
+            {
+              "kind": "paramref",
+              "text": "assetPath"
+            },
+            {
+              "kind": "text",
+              "text": " (a "
+            },
+            {
+              "kind": "code",
+              "text": ".prefab"
+            },
+            {
+              "kind": "text",
+              "text": " or an imported model such as a "
+            },
+            {
+              "kind": "code",
+              "text": ".fbx"
+            },
+            {
+              "kind": "text",
+              "text": "). The path is authoring-time convenience only — the GUID is authoritative and stored in the sidecar; two calls with the same path produce two distinct instances."
+            }
+          ],
+          "overloads": [
+            {
+              "signature": "public InstanceHandle Instance(string assetPath)",
+              "returnType": "InstanceHandle",
+              "parameters": [
+                {
+                  "name": "assetPath",
+                  "type": "string",
+                  "summary": []
+                }
+              ],
+              "typeParams": [],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Instantiate a prefab instance nested under this GameObject, from "
+                },
+                {
+                  "kind": "paramref",
+                  "text": "assetPath"
+                },
+                {
+                  "kind": "text",
+                  "text": " (a "
+                },
+                {
+                  "kind": "code",
+                  "text": ".prefab"
+                },
+                {
+                  "kind": "text",
+                  "text": " or an imported model such as a "
+                },
+                {
+                  "kind": "code",
+                  "text": ".fbx"
+                },
+                {
+                  "kind": "text",
+                  "text": "). The path is authoring-time convenience only — the GUID is authoritative and stored in the sidecar; two calls with the same path produce two distinct instances."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            }
+          ]
+        },
+        {
+          "id": "component",
+          "name": "Component",
+          "kind": "method",
+          "isStatic": false,
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Attach a component of type "
+            },
+            {
+              "kind": "typeparamref",
+              "text": "T"
+            },
+            {
+              "kind": "text",
+              "text": " with no field overrides."
+            }
+          ],
+          "overloads": [
+            {
+              "signature": "public NodeHandle Component<T>()",
+              "returnType": "NodeHandle",
+              "parameters": [],
+              "typeParams": [
+                {
+                  "name": "T",
+                  "summary": []
+                }
+              ],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Attach a component of type "
+                },
+                {
+                  "kind": "typeparamref",
+                  "text": "T"
+                },
+                {
+                  "kind": "text",
+                  "text": " with no field overrides."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            },
+            {
+              "signature": "public NodeHandle Component<T>(Action<ComponentHandle<T>> configure)",
+              "returnType": "NodeHandle",
+              "parameters": [
+                {
+                  "name": "configure",
+                  "type": "Action<ComponentHandle<T>>",
+                  "summary": []
+                }
+              ],
+              "typeParams": [
+                {
+                  "name": "T",
+                  "summary": []
+                }
+              ],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Attach a component of type "
+                },
+                {
+                  "kind": "typeparamref",
+                  "text": "T"
+                },
+                {
+                  "kind": "text",
+                  "text": " and set its serialized fields in a closure — "
+                },
+                {
+                  "kind": "code",
+                  "text": "c.Set(\"m_Mass\", 5f)"
+                },
+                {
+                  "kind": "text",
+                  "text": " (serialized path) or "
+                },
+                {
+                  "kind": "code",
+                  "text": "c.Set(r => r.mass, 5f)"
+                },
+                {
+                  "kind": "text",
+                  "text": " (typed member selector)."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            }
+          ]
+        }
+      ],
+      "nestedTypes": [],
+      "enumValues": []
+    },
+    {
+      "id": "override-handle",
+      "name": "OverrideHandle",
+      "displayName": "OverrideHandle",
+      "kind": "class",
+      "signature": "public sealed class OverrideHandle",
+      "sourcePath": "com.codescenes/Runtime/OverrideHandle.cs",
+      "summary": [
+        {
+          "kind": "text",
+          "text": "A handle for authoring property overrides on a prefab instance's root, via "
+        },
+        {
+          "kind": "ref",
+          "text": "InstanceHandle.Override",
+          "type": "instance-handle",
+          "member": "override"
+        },
+        {
+          "kind": "text",
+          "text": ". Unlike "
+        },
+        {
+          "kind": "ref",
+          "text": "ComponentHandle<T>",
+          "type": "component-handle-1"
+        },
+        {
+          "kind": "text",
+          "text": ", a single closure can target multiple different root component types — "
+        },
+        {
+          "kind": "code",
+          "text": "TComponent"
+        },
+        {
+          "kind": "text",
+          "text": " is inferred per-call from the selector's explicitly-typed lambda parameter, e.g. "
+        },
+        {
+          "kind": "code",
+          "text": "e.Set((Health x) => x.health, 50)"
+        },
+        {
+          "kind": "text",
+          "text": "."
+        }
+      ],
+      "remarks": [
+        {
+          "kind": "text",
+          "text": "Compile-time scaffolding only — SceneBuilder parses the source text to build the scene, so these methods return handles for chaining but perform no work at runtime."
+        }
+      ],
+      "typeParams": [],
+      "members": [
+        {
+          "id": "set",
+          "name": "Set",
+          "kind": "method",
+          "isStatic": false,
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Set a field by typed member selector (e.g. "
+            },
+            {
+              "kind": "code",
+              "text": "(Health x) => x.health"
+            },
+            {
+              "kind": "text",
+              "text": ")."
+            }
+          ],
+          "overloads": [
+            {
+              "signature": "public OverrideHandle Set<TComponent, TValue>(Func<TComponent, TValue> selector, TValue value)",
+              "returnType": "OverrideHandle",
+              "parameters": [
+                {
+                  "name": "selector",
+                  "type": "Func<TComponent, TValue>",
+                  "summary": []
+                },
+                {
+                  "name": "value",
+                  "type": "TValue",
+                  "summary": []
+                }
+              ],
+              "typeParams": [
+                {
+                  "name": "TComponent",
+                  "summary": []
+                },
+                {
+                  "name": "TValue",
+                  "summary": []
+                }
+              ],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Set a field by typed member selector (e.g. "
+                },
+                {
+                  "kind": "code",
+                  "text": "(Health x) => x.health"
+                },
+                {
+                  "kind": "text",
+                  "text": ")."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            },
+            {
+              "signature": "public OverrideHandle Set<TComponent, TValue>(Func<TComponent, TValue> selector, AssetReference asset)",
+              "returnType": "OverrideHandle",
+              "parameters": [
+                {
+                  "name": "selector",
+                  "type": "Func<TComponent, TValue>",
+                  "summary": []
+                },
+                {
+                  "name": "asset",
+                  "type": "AssetReference",
+                  "summary": []
+                }
+              ],
+              "typeParams": [
+                {
+                  "name": "TComponent",
+                  "summary": []
+                },
+                {
+                  "name": "TValue",
+                  "summary": []
+                }
+              ],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Set an asset-reference field by typed member selector, e.g. "
+                },
+                {
+                  "kind": "code",
+                  "text": "e.Set((MeshRenderer m) => m.sharedMaterial, Asset(\"Assets/Materials/Red.mat\"))"
+                },
+                {
+                  "kind": "text",
+                  "text": ". The selector's return type is the asset type; the value is the "
+                },
+                {
+                  "kind": "ref",
+                  "text": "AssetReference",
+                  "type": "asset-reference"
+                },
+                {
+                  "kind": "text",
+                  "text": " factory result."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            },
+            {
+              "signature": "public OverrideHandle Set<TComponent, TValue>(Func<TComponent, TValue> selector, NodeHandle target)",
+              "returnType": "OverrideHandle",
+              "parameters": [
+                {
+                  "name": "selector",
+                  "type": "Func<TComponent, TValue>",
+                  "summary": []
+                },
+                {
+                  "name": "target",
+                  "type": "NodeHandle",
+                  "summary": []
+                }
+              ],
+              "typeParams": [
+                {
+                  "name": "TComponent",
+                  "summary": []
+                },
+                {
+                  "name": "TValue",
+                  "summary": []
+                }
+              ],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Set a cross-object-reference field by typed member selector, e.g. "
+                },
+                {
+                  "kind": "code",
+                  "text": "e.Set((Joint j) => j.connectedBody, target)"
+                },
+                {
+                  "kind": "text",
+                  "text": ". Pass "
+                },
+                {
+                  "kind": "ref",
+                  "text": "NodeHandle.None",
+                  "type": "node-handle",
+                  "member": "none"
+                },
+                {
+                  "kind": "text",
+                  "text": " to clear the slot."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            },
+            {
+              "signature": "public OverrideHandle Set<TComponent>(string serializedPath, object value)",
+              "returnType": "OverrideHandle",
+              "parameters": [
+                {
+                  "name": "serializedPath",
+                  "type": "string",
+                  "summary": []
+                },
+                {
+                  "name": "value",
+                  "type": "object",
+                  "summary": []
+                }
+              ],
+              "typeParams": [
+                {
+                  "name": "TComponent",
+                  "summary": []
+                }
+              ],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Set a field by serialized property path (e.g. "
+                },
+                {
+                  "kind": "code",
+                  "text": "e.Set<BoxCollider>(\"m_Center.x\", 1.0)"
+                },
+                {
+                  "kind": "text",
+                  "text": "). The target root component type is explicit since there is no selector closure to infer it from."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            }
+          ]
+        }
+      ],
+      "nestedTypes": [],
+      "enumValues": []
+    },
+    {
+      "id": "prefab-ref",
+      "name": "PrefabRef",
+      "displayName": "PrefabRef",
+      "kind": "class",
+      "signature": "public class PrefabRef",
+      "sourcePath": "com.codescenes/Runtime/PrefabRef.cs",
+      "summary": [
+        {
+          "kind": "text",
+          "text": "Base type every generated typed prefab reference derives from — both root prefab refs (e.g. "
+        },
+        {
+          "kind": "code",
+          "text": "TankRef"
+        },
+        {
+          "kind": "text",
+          "text": ", exposed as "
+        },
+        {
+          "kind": "code",
+          "text": "Prefabs.Tank"
+        },
+        {
+          "kind": "text",
+          "text": ") and node refs for nested children (e.g. "
+        },
+        {
+          "kind": "code",
+          "text": "TurretRef"
+        },
+        {
+          "kind": "text",
+          "text": ", exposed as "
+        },
+        {
+          "kind": "code",
+          "text": "TankRef.Turret"
+        },
+        {
+          "kind": "text",
+          "text": ")."
+        }
+      ],
+      "remarks": [
+        {
+          "kind": "text",
+          "text": "Compile-time scaffolding only — SceneBuilder parses the source text to build the scene, so derived types carry no runtime behavior (generated get-only properties simply return "
+        },
+        {
+          "kind": "code",
+          "text": "default!"
+        },
+        {
+          "kind": "text",
+          "text": ")."
+        }
+      ],
+      "typeParams": [],
+      "members": [],
+      "nestedTypes": [],
+      "enumValues": []
+    },
+    {
+      "id": "scene-root",
+      "name": "SceneRoot",
+      "displayName": "SceneRoot",
+      "kind": "class",
+      "signature": "public sealed class SceneRoot",
+      "sourcePath": "com.codescenes/Runtime/SceneRoot.cs",
+      "summary": [
+        {
+          "kind": "text",
+          "text": "Root of a scene definition. Add top-level GameObjects here."
+        }
+      ],
+      "remarks": [
+        {
+          "kind": "text",
+          "text": "This is compile-time scaffolding so builder files type-check and autocomplete. SceneBuilder reads the source text (via Roslyn) to build the scene — these methods are never executed."
+        }
+      ],
+      "typeParams": [],
+      "members": [
+        {
+          "id": "add",
+          "name": "Add",
+          "kind": "method",
+          "isStatic": false,
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Add a root GameObject."
+            }
+          ],
+          "overloads": [
+            {
+              "signature": "public NodeHandle Add(string name)",
+              "returnType": "NodeHandle",
+              "parameters": [
+                {
+                  "name": "name",
+                  "type": "string",
+                  "summary": []
+                }
+              ],
+              "typeParams": [],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Add a root GameObject."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            },
+            {
+              "signature": "public NodeHandle Add(string name, Action<NodeHandle> configure)",
+              "returnType": "NodeHandle",
+              "parameters": [
+                {
+                  "name": "name",
+                  "type": "string",
+                  "summary": []
+                },
+                {
+                  "name": "configure",
+                  "type": "Action<NodeHandle>",
+                  "summary": []
+                }
+              ],
+              "typeParams": [],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Add a root GameObject and configure it (and its children) in a closure."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            }
+          ]
+        },
+        {
+          "id": "instance",
+          "name": "Instance",
+          "kind": "method",
+          "isStatic": false,
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Instantiate a root prefab instance from "
+            },
+            {
+              "kind": "paramref",
+              "text": "assetPath"
+            },
+            {
+              "kind": "text",
+              "text": " (a "
+            },
+            {
+              "kind": "code",
+              "text": ".prefab"
+            },
+            {
+              "kind": "text",
+              "text": " or an imported model such as a "
+            },
+            {
+              "kind": "code",
+              "text": ".fbx"
+            },
+            {
+              "kind": "text",
+              "text": "). The path is authoring-time convenience only — the GUID is authoritative and stored in the sidecar; two calls with the same path produce two distinct instances."
+            }
+          ],
+          "overloads": [
+            {
+              "signature": "public InstanceHandle Instance(string assetPath)",
+              "returnType": "InstanceHandle",
+              "parameters": [
+                {
+                  "name": "assetPath",
+                  "type": "string",
+                  "summary": []
+                }
+              ],
+              "typeParams": [],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Instantiate a root prefab instance from "
+                },
+                {
+                  "kind": "paramref",
+                  "text": "assetPath"
+                },
+                {
+                  "kind": "text",
+                  "text": " (a "
+                },
+                {
+                  "kind": "code",
+                  "text": ".prefab"
+                },
+                {
+                  "kind": "text",
+                  "text": " or an imported model such as a "
+                },
+                {
+                  "kind": "code",
+                  "text": ".fbx"
+                },
+                {
+                  "kind": "text",
+                  "text": "). The path is authoring-time convenience only — the GUID is authoritative and stored in the sidecar; two calls with the same path produce two distinct instances."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            },
+            {
+              "signature": "public InstanceHandle<TRef> Instance<TRef>(TRef prefab) where TRef : PrefabRef",
+              "returnType": "InstanceHandle<TRef>",
+              "parameters": [
+                {
+                  "name": "prefab",
+                  "type": "TRef",
+                  "summary": []
+                }
+              ],
+              "typeParams": [
+                {
+                  "name": "TRef",
+                  "constraint": "PrefabRef",
+                  "summary": []
+                }
+              ],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Instantiate a root prefab instance from a generated typed ref (e.g. "
+                },
+                {
+                  "kind": "code",
+                  "text": "Prefabs.Tank"
+                },
+                {
+                  "kind": "text",
+                  "text": "). Returns a typed handle so nested targets can be addressed via a compiler-checked selector, e.g. "
+                },
+                {
+                  "kind": "code",
+                  "text": ".On(t => t.Turret.Barrel, ...)"
+                },
+                {
+                  "kind": "text",
+                  "text": "."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            }
+          ]
+        }
+      ],
+      "nestedTypes": [],
+      "enumValues": []
+    },
+    {
+      "id": "scoped-handle",
+      "name": "ScopedHandle",
+      "displayName": "ScopedHandle",
+      "kind": "class",
+      "signature": "public sealed class ScopedHandle",
+      "sourcePath": "com.codescenes/Runtime/ScopedHandle.cs",
+      "summary": [
+        {
+          "kind": "text",
+          "text": "The closure argument passed to "
+        },
+        {
+          "kind": "ref",
+          "text": "InstanceHandle.On",
+          "type": "instance-handle",
+          "member": "on"
+        },
+        {
+          "kind": "text",
+          "text": " / "
+        },
+        {
+          "kind": "ref",
+          "text": "InstanceHandle.On",
+          "type": "instance-handle-1",
+          "member": "on"
+        },
+        {
+          "kind": "text",
+          "text": ", used to author overrides scoped to a nested target inside a prefab instance's hierarchy (e.g. the turret's barrel)."
+        }
+      ],
+      "remarks": [
+        {
+          "kind": "text",
+          "text": "Compile-time scaffolding only — SceneBuilder parses the source text to build the scene, so these methods return handles for chaining but perform no work at runtime."
+        }
+      ],
+      "typeParams": [],
+      "members": [
+        {
+          "id": "override",
+          "name": "Override",
+          "kind": "method",
+          "isStatic": false,
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Author property overrides on the scoped target's own components, mirroring "
+            },
+            {
+              "kind": "ref",
+              "text": "InstanceHandle.Override",
+              "type": "instance-handle",
+              "member": "override"
+            },
+            {
+              "kind": "text",
+              "text": "."
+            }
+          ],
+          "overloads": [
+            {
+              "signature": "public ScopedHandle Override(Action<OverrideHandle> configure)",
+              "returnType": "ScopedHandle",
+              "parameters": [
+                {
+                  "name": "configure",
+                  "type": "Action<OverrideHandle>",
+                  "summary": []
+                }
+              ],
+              "typeParams": [],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Author property overrides on the scoped target's own components, mirroring "
+                },
+                {
+                  "kind": "ref",
+                  "text": "InstanceHandle.Override",
+                  "type": "instance-handle",
+                  "member": "override"
+                },
+                {
+                  "kind": "text",
+                  "text": "."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            }
+          ]
+        },
+        {
+          "id": "add-component",
+          "name": "AddComponent",
+          "kind": "method",
+          "isStatic": false,
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Add a component of type "
+            },
+            {
+              "kind": "typeparamref",
+              "text": "T"
+            },
+            {
+              "kind": "text",
+              "text": " to the scoped target with no field overrides."
+            }
+          ],
+          "overloads": [
+            {
+              "signature": "public ScopedHandle AddComponent<T>()",
+              "returnType": "ScopedHandle",
+              "parameters": [],
+              "typeParams": [
+                {
+                  "name": "T",
+                  "summary": []
+                }
+              ],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Add a component of type "
+                },
+                {
+                  "kind": "typeparamref",
+                  "text": "T"
+                },
+                {
+                  "kind": "text",
+                  "text": " to the scoped target with no field overrides."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            },
+            {
+              "signature": "public ScopedHandle AddComponent<T>(Action<ComponentHandle<T>> configure)",
+              "returnType": "ScopedHandle",
+              "parameters": [
+                {
+                  "name": "configure",
+                  "type": "Action<ComponentHandle<T>>",
+                  "summary": []
+                }
+              ],
+              "typeParams": [
+                {
+                  "name": "T",
+                  "summary": []
+                }
+              ],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Add a component of type "
+                },
+                {
+                  "kind": "typeparamref",
+                  "text": "T"
+                },
+                {
+                  "kind": "text",
+                  "text": " to the scoped target and set its serialized fields in a closure."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            }
+          ]
+        },
+        {
+          "id": "remove-component",
+          "name": "RemoveComponent",
+          "kind": "method",
+          "isStatic": false,
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Remove a component of type "
+            },
+            {
+              "kind": "typeparamref",
+              "text": "T"
+            },
+            {
+              "kind": "text",
+              "text": " from the scoped target (must exist on the source prefab)."
+            }
+          ],
+          "overloads": [
+            {
+              "signature": "public ScopedHandle RemoveComponent<T>()",
+              "returnType": "ScopedHandle",
+              "parameters": [],
+              "typeParams": [
+                {
+                  "name": "T",
+                  "summary": []
+                }
+              ],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Remove a component of type "
+                },
+                {
+                  "kind": "typeparamref",
+                  "text": "T"
+                },
+                {
+                  "kind": "text",
+                  "text": " from the scoped target (must exist on the source prefab)."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            }
+          ]
+        }
+      ],
+      "nestedTypes": [],
+      "enumValues": []
+    },
+    {
+      "id": "surface-snap",
+      "name": "SurfaceSnap",
+      "displayName": "SurfaceSnap",
+      "kind": "class",
+      "signature": "public sealed class SurfaceSnap : MonoBehaviour",
+      "baseType": "MonoBehaviour",
+      "sourcePath": "com.codescenes/Runtime/SurfaceSnap.cs",
+      "summary": [
+        {
+          "kind": "text",
+          "text": "Editor-time (and play-mode-guarded) world-bounds snap. Drives "
+        },
+        {
+          "kind": "code",
+          "text": "transform.position"
+        },
+        {
+          "kind": "text",
+          "text": " on the set world axes so a sibling "
+        },
+        {
+          "kind": "link",
+          "text": "Renderer",
+          "href": "https://docs.unity3d.com/ScriptReference/Renderer.html"
+        },
+        {
+          "kind": "text",
+          "text": "'s world bounds face lands flush against a resolved surface (raycast hit, collider-less fallback scan, or an explicit "
+        },
+        {
+          "kind": "ref",
+          "text": "target",
+          "type": "surface-snap",
+          "member": "target"
+        },
+        {
+          "kind": "text",
+          "text": " override), independent of the object's own pivot."
+        }
+      ],
+      "remarks": [
+        {
+          "kind": "text",
+          "text": "Serialized field names are the real write contract — they MUST equal "
+        },
+        {
+          "kind": "code",
+          "text": "SceneBuilder.Core.Model.SpatialComponents.SurfaceSnapFields.*"
+        },
+        {
+          "kind": "text",
+          "text": " so Materialize's by-name write hits the right field."
+        }
+      ],
+      "typeParams": [],
+      "members": [
+        {
+          "id": "vertical",
+          "name": "vertical",
+          "kind": "field",
+          "isStatic": false,
+          "summary": [],
+          "overloads": [
+            {
+              "signature": "public Vertical vertical",
+              "returnType": "Vertical",
+              "parameters": [],
+              "typeParams": [],
+              "summary": [],
+              "remarks": [],
+              "returns": []
+            }
+          ]
+        },
+        {
+          "id": "horizontal",
+          "name": "horizontal",
+          "kind": "field",
+          "isStatic": false,
+          "summary": [],
+          "overloads": [
+            {
+              "signature": "public Horizontal horizontal",
+              "returnType": "Horizontal",
+              "parameters": [],
+              "typeParams": [],
+              "summary": [],
+              "remarks": [],
+              "returns": []
+            }
+          ]
+        },
+        {
+          "id": "depth",
+          "name": "depth",
+          "kind": "field",
+          "isStatic": false,
+          "summary": [],
+          "overloads": [
+            {
+              "signature": "public Depth depth",
+              "returnType": "Depth",
+              "parameters": [],
+              "typeParams": [],
+              "summary": [],
+              "remarks": [],
+              "returns": []
+            }
+          ]
+        },
+        {
+          "id": "target",
+          "name": "target",
+          "kind": "field",
+          "isStatic": false,
+          "summary": [],
+          "overloads": [
+            {
+              "signature": "public Transform target",
+              "returnType": "Transform",
+              "parameters": [],
+              "typeParams": [],
+              "summary": [],
+              "remarks": [],
+              "returns": []
+            }
+          ]
+        },
+        {
+          "id": "capture-threshold",
+          "name": "captureThreshold",
+          "kind": "field",
+          "isStatic": false,
+          "summary": [
+            {
+              "kind": "text",
+              "text": "World-unit drag distance (measured on snapped axes only) beyond which a manual move is treated as an intentional detach rather than a re-snap. Sticky: once detached the component disables itself (see "
+            },
+            {
+              "kind": "ref",
+              "text": "Evaluate",
+              "type": "surface-snap",
+              "member": "evaluate"
+            },
+            {
+              "kind": "text",
+              "text": ") until re-enabled."
+            }
+          ],
+          "overloads": [
+            {
+              "signature": "public float captureThreshold",
+              "returnType": "float",
+              "parameters": [],
+              "typeParams": [],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "World-unit drag distance (measured on snapped axes only) beyond which a manual move is treated as an intentional detach rather than a re-snap. Sticky: once detached the component disables itself (see "
+                },
+                {
+                  "kind": "ref",
+                  "text": "Evaluate",
+                  "type": "surface-snap",
+                  "member": "evaluate"
+                },
+                {
+                  "kind": "text",
+                  "text": ") until re-enabled."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            }
+          ]
+        },
+        {
+          "id": "reset-baseline",
+          "name": "ResetBaseline",
+          "kind": "method",
+          "isStatic": false,
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Forgets the last-self-write baseline (NaN sentinel) and forces a fresh snap on the next "
+            },
+            {
+              "kind": "ref",
+              "text": "Evaluate",
+              "type": "surface-snap",
+              "member": "evaluate"
+            },
+            {
+              "kind": "text",
+              "text": ". Called on enable, and by "
+            },
+            {
+              "kind": "code",
+              "text": "PlanExecutor"
+            },
+            {
+              "kind": "text",
+              "text": " (code->scene) right after it writes "
+            },
+            {
+              "kind": "code",
+              "text": "m_LocalPosition"
+            },
+            {
+              "kind": "text",
+              "text": " directly on this object's "
+            },
+            {
+              "kind": "link",
+              "text": "Transform",
+              "href": "https://docs.unity3d.com/ScriptReference/Transform.html"
+            },
+            {
+              "kind": "text",
+              "text": " (materialize always writes the full authored transform per spec 23, including a frozen driven-channel placeholder — that write is the plugin's own, not a user drag, so it must not count toward "
+            },
+            {
+              "kind": "ref",
+              "text": "captureThreshold",
+              "type": "surface-snap",
+              "member": "capture-threshold"
+            },
+            {
+              "kind": "text",
+              "text": "; the very next Evaluate() re-derives from this fresh baseline instead of sticky-detaching off a stale in-memory baseline)."
+            }
+          ],
+          "overloads": [
+            {
+              "signature": "public void ResetBaseline()",
+              "returnType": "void",
+              "parameters": [],
+              "typeParams": [],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Forgets the last-self-write baseline (NaN sentinel) and forces a fresh snap on the next "
+                },
+                {
+                  "kind": "ref",
+                  "text": "Evaluate",
+                  "type": "surface-snap",
+                  "member": "evaluate"
+                },
+                {
+                  "kind": "text",
+                  "text": ". Called on enable, and by "
+                },
+                {
+                  "kind": "code",
+                  "text": "PlanExecutor"
+                },
+                {
+                  "kind": "text",
+                  "text": " (code->scene) right after it writes "
+                },
+                {
+                  "kind": "code",
+                  "text": "m_LocalPosition"
+                },
+                {
+                  "kind": "text",
+                  "text": " directly on this object's "
+                },
+                {
+                  "kind": "link",
+                  "text": "Transform",
+                  "href": "https://docs.unity3d.com/ScriptReference/Transform.html"
+                },
+                {
+                  "kind": "text",
+                  "text": " (materialize always writes the full authored transform per spec 23, including a frozen driven-channel placeholder — that write is the plugin's own, not a user drag, so it must not count toward "
+                },
+                {
+                  "kind": "ref",
+                  "text": "captureThreshold",
+                  "type": "surface-snap",
+                  "member": "capture-threshold"
+                },
+                {
+                  "kind": "text",
+                  "text": "; the very next Evaluate() re-derives from this fresh baseline instead of sticky-detaching off a stale in-memory baseline)."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            }
+          ]
+        },
+        {
+          "id": "evaluate",
+          "name": "Evaluate",
+          "kind": "method",
+          "isStatic": false,
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Recompute the position of each set axis so the corresponding bounds face lands flush against the resolved surface for that axis (target override > raycast > collider-less fallback scan). Free (unset) axes are left untouched."
+            }
+          ],
+          "overloads": [
+            {
+              "signature": "public void Evaluate()",
+              "returnType": "void",
+              "parameters": [],
+              "typeParams": [],
+              "summary": [
+                {
+                  "kind": "text",
+                  "text": "Recompute the position of each set axis so the corresponding bounds face lands flush against the resolved surface for that axis (target override > raycast > collider-less fallback scan). Free (unset) axes are left untouched."
+                }
+              ],
+              "remarks": [],
+              "returns": []
+            }
+          ]
+        }
+      ],
+      "nestedTypes": [
+        {
+          "id": "vertical",
+          "name": "Vertical",
+          "displayName": "Vertical",
+          "kind": "enum",
+          "signature": "public enum Vertical",
+          "sourcePath": "com.codescenes/Runtime/SurfaceSnap.cs",
+          "summary": [],
+          "remarks": [],
+          "typeParams": [],
+          "members": [],
+          "nestedTypes": [],
+          "enumValues": [
+            {
+              "name": "None",
+              "summary": []
+            },
+            {
+              "name": "Up",
+              "summary": []
+            },
+            {
+              "name": "Down",
+              "summary": []
+            }
+          ]
+        },
+        {
+          "id": "horizontal",
+          "name": "Horizontal",
+          "displayName": "Horizontal",
+          "kind": "enum",
+          "signature": "public enum Horizontal",
+          "sourcePath": "com.codescenes/Runtime/SurfaceSnap.cs",
+          "summary": [],
+          "remarks": [],
+          "typeParams": [],
+          "members": [],
+          "nestedTypes": [],
+          "enumValues": [
+            {
+              "name": "None",
+              "summary": []
+            },
+            {
+              "name": "Left",
+              "summary": []
+            },
+            {
+              "name": "Right",
+              "summary": []
+            }
+          ]
+        },
+        {
+          "id": "depth",
+          "name": "Depth",
+          "displayName": "Depth",
+          "kind": "enum",
+          "signature": "public enum Depth",
+          "sourcePath": "com.codescenes/Runtime/SurfaceSnap.cs",
+          "summary": [],
+          "remarks": [],
+          "typeParams": [],
+          "members": [],
+          "nestedTypes": [],
+          "enumValues": [
+            {
+              "name": "None",
+              "summary": []
+            },
+            {
+              "name": "Forward",
+              "summary": []
+            },
+            {
+              "name": "Back",
+              "summary": []
+            }
+          ]
+        }
+      ],
+      "enumValues": []
+    }
+  ],
+  "diagnostics": [
+    {
+      "id": "SB1001",
+      "title": "Build body must be a flat sequence of builder calls",
+      "messageFormat": "{0}",
+      "category": "CodeScenes.Shape",
+      "severity": "Error",
+      "summary": []
+    },
+    {
+      "id": "SB1002",
+      "title": "Unrecognized builder call",
+      "messageFormat": "{0}",
+      "category": "CodeScenes.Shape",
+      "severity": "Error",
+      "summary": []
+    },
+    {
+      "id": "SB1003",
+      "title": "Component closure must contain only .Set(...) calls",
+      "messageFormat": "{0}",
+      "category": "CodeScenes.Shape",
+      "severity": "Error",
+      "summary": []
+    },
+    {
+      "id": "SB1101",
+      "title": "Use the typed .Set(...) form",
+      "messageFormat": "Use the typed form `.Set(x => x.member, …)` — the compiler checks the member and its type.",
+      "category": "CodeScenes.Nudge",
+      "severity": "Info",
+      "summary": []
+    },
+    {
+      "id": "SB1102",
+      "title": "Use the typed prefab reference",
+      "messageFormat": "Use `Instance(Prefabs.X)` (spec 25) — a stale/typo'd prefab path then fails to compile.",
+      "category": "CodeScenes.Nudge",
+      "severity": "Info",
+      "summary": []
+    },
+    {
+      "id": "SB1103",
+      "title": "Use the typed .On(...) selector",
+      "messageFormat": "Use the typed selector `.On(sel => sel.A.B, …)` (spec 24/25).",
+      "category": "CodeScenes.Nudge",
+      "severity": "Info",
+      "summary": []
+    },
+    {
+      "id": "SB1104",
+      "title": "Use the typed Tags catalog",
+      "messageFormat": "Use `Tags.<str>` — a typo'd tag then fails to compile.",
+      "category": "CodeScenes.Nudge",
+      "severity": "Warning",
+      "summary": []
+    },
+    {
+      "id": "SB1105",
+      "title": "Use the typed Layers catalog",
+      "messageFormat": "Use `Layers.<name>` — a typo'd/invalid layer then fails to compile.",
+      "category": "CodeScenes.Nudge",
+      "severity": "Warning",
+      "summary": []
+    },
+    {
+      "id": "SB1106",
+      "title": "Use the typed Set<T> overload",
+      "messageFormat": "Use `Set<T>(x => x.member, value)` — the compiler catches value-type mismatches.",
+      "category": "CodeScenes.Nudge",
+      "severity": "Info",
+      "summary": []
+    },
+    {
+      "id": "SB1201",
+      "title": "UnityEvent listener signature mismatch",
+      "messageFormat": "Method `{0}` does not match `{1}`'s signature; expected `{2}`.",
+      "category": "CodeScenes.UnityEvent",
+      "severity": "Error",
+      "summary": []
+    },
+    {
+      "id": "SB1202",
+      "title": "UnityEvent listener target not eligible",
+      "messageFormat": "Persistent-listener targets must be public instance/static methods matching the event.",
+      "category": "CodeScenes.UnityEvent",
+      "severity": "Warning",
+      "summary": []
+    }
+  ]
+}

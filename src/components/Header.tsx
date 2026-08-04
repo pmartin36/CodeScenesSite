@@ -1,19 +1,26 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { Logo } from "./Logo";
 import { NotifyLink } from "./NotifyLink";
 import { GetPluginButton } from "./GetPluginButton";
 
+// Section links are rooted at "/" so they still reach the home page from /docs. They stay plain
+// <a> rather than next/link, so the browser resolves the fragment itself on a hard navigation and
+// honours scroll-padding-top for the fixed header.
+/* eslint-disable @next/next/no-html-link-for-pages */
 const NAV = [
-  { label: "Features", href: "#features" },
-  { label: "How it works", href: "#how" },
-  { label: "Help", href: "#help" },
+  { label: "Features", href: "/#features" },
+  { label: "How it works", href: "/#how" },
+  { label: "Docs", href: "/docs/" },
+  { label: "Help", href: "/#help" },
 ];
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -36,7 +43,12 @@ export function Header() {
           {/* left: nav (desktop) */}
           <nav className="hidden md:flex items-center gap-7" style={{ flex: 1 }}>
             {NAV.map((item) => (
-              <a key={item.href} href={item.href} className="nav-link">
+              <a
+                key={item.href}
+                href={item.href}
+                className="nav-link"
+                data-active={item.href === "/docs/" && pathname?.startsWith("/docs")}
+              >
                 {item.label}
               </a>
             ))}
@@ -44,7 +56,7 @@ export function Header() {
 
           {/* center: wordmark */}
           <a
-            href="#top"
+            href="/#top"
             aria-label="CodeScenes home"
             className="md:absolute md:left-1/2 md:-translate-x-1/2"
           >
