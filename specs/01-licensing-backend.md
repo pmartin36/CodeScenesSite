@@ -37,7 +37,7 @@ the machine already is.
 links to it directly.
 
 ```
-GUMROAD_PRODUCT_URL = "https://paulmartindev.gumroad.com/l/zuwqt"
+GUMROAD_PRODUCT_URL = "https://paulmartindev.gumroad.com/l/codescenes"
 GUMROAD_PRODUCT_ID  = "d_bOiSZquNziUu2K45OHIA=="   // functions/.env, not a secret
 ```
 
