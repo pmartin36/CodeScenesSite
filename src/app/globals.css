@@ -287,15 +287,14 @@ a {
 /* Link sitting inside running text. Inherits the type of whatever wraps it, so
    it cannot fight the surrounding size the way the standalone link styles do. */
 .link-inline {
-  color: inherit;
+  color: var(--text);
   font: inherit;
-  text-decoration: underline;
-  text-decoration-color: var(--text-muted);
+  text-decoration: none;
   text-underline-offset: 3px;
   transition: color 150ms ease;
 }
 
-.link-inline:hover { color: var(--text); }
+.link-inline:hover { text-decoration: underline; }
 
 /* ============================================================
    Modal (native <dialog>)
