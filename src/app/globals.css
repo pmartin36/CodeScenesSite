@@ -284,6 +284,19 @@ a {
 }
 .link-quiet-mono:hover { color: var(--accent-hover); }
 
+/* Link sitting inside running text. Inherits the type of whatever wraps it, so
+   it cannot fight the surrounding size the way the standalone link styles do. */
+.link-inline {
+  color: inherit;
+  font: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--text-muted);
+  text-underline-offset: 3px;
+  transition: color 150ms ease;
+}
+
+.link-inline:hover { color: var(--text); }
+
 /* ============================================================
    Modal (native <dialog>)
    ============================================================ */

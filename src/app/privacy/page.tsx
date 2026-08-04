@@ -100,7 +100,7 @@ export default function Privacy() {
               </h2>
               <p style={{ marginTop: 14 }}>
                 Email{" "}
-                <a href={`mailto:${CONTACT_EMAIL}`} className="link-quiet">
+                <a href={`mailto:${CONTACT_EMAIL}`} className="link-inline">
                   {CONTACT_EMAIL}
                 </a>{" "}
                 and say what you want: a copy of what is held, correction, or

@@ -183,7 +183,7 @@ export function SubscribeModal({
 
             <p className="modal-fineprint">
               Unsubscribe any time. See the{" "}
-              <a href="/privacy/" className="link-quiet">
+              <a href="/privacy/" className="link-inline">
                 privacy notice
               </a>
               .
